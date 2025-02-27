@@ -4,57 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spectre Divide</title>
-
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-condensed">
     <link rel="stylesheet" href="styles/default-styles.css">
     <script type="text/javascript" src="data/data.json"></script>
     <script src="src/main.js" type="module"></script>
-
 </head>
 <body>
     <h1>                
-        <img src="assets/misc/SDGS1Logo.png" width="1024" height="224" alt="Spectre Divide Geoguessr" id="logo-image" >
+        <img src="assets/misc/SDGS1Logo.png" width="1024" height="224" alt="Spectre Divide Geoguessr" id="logo-image">
     </h1>
 
     <div class="quiz">
-        <!-- Game status display -->
         <div id="result">Where is this image?</div>
-        <div id="map-name">&nbsp;</div>
         
-        <!-- continue confirmation buttons -->
-        <div class="confirm-buttons">
-            <button class="btn confirm-btn" id="btn-yes">Yes</button>
-            <button class="btn confirm-btn" id="btn-no">No</button> 
-        </div>
-        
-        <!-- Main game layout -->
-        <div class="game-container">
-            <!-- Left side utility buttons -->
+        <div class="game-layout">
             <div class="left-controls">
                 <button class="btn utility-btn map-btn" id="btn-map">Get Map</button>
                 <button class="btn utility-btn" id="btn-answer">Get Answer</button>
                 <button class="btn utility-btn" id="btn-clear">Clear Map</button>
             </div>
 
-            <!-- Center content: image and map buttons below -->
             <div class="center-content">
-                <!-- Main game image -->
+                <div class="maps">
+                    <button class="btn map-btn" id="btn-mill"><span>Mill</span></button>
+                    <button class="btn map-btn" id="btn-metro"><span>Metro</span></button>
+                    <button class="btn map-btn" id="btn-skyway"><span>Skyway</span></button>
+                    <button class="btn map-btn" id="btn-commons"><span>Commons</span></button>
+                    <button class="btn map-btn" id="btn-canal"><span>Canal</span></button>
+                </div>
+                
                 <div class="quiz-image">
                     <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
                     <img width="720" height="720" class="image" id="clickable-image"> 
                     <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
                 </div>
-
-                <!-- Maps selection (horizontal, below the image) -->
-                <div class="maps">
-                    <button class="btn map-btn" id="btn-mill">Mill</button>
-                    <button class="btn map-btn" id="btn-metro">Metro</button>
-                    <button class="btn map-btn" id="btn-skyway">Skyway</button>
-                    <button class="btn map-btn" id="btn-commons">Commons</button>
-                    <button class="btn map-btn" id="btn-canal">Canal</button>
+                
+                <div id="map-name">&nbsp;</div>
+                
+                <div class="confirm-buttons">
+                    <button class="btn confirm-btn" id="btn-yes">Yes</button>
+                    <button class="btn confirm-btn" id="btn-no">No</button> 
                 </div>
             </div>
 
-            <!-- Right side utility buttons -->
             <div class="right-controls">
                 <button class="btn utility-btn" id="btn-submit">Submit</button>
                 <button class="btn utility-btn" id="btn-continue">Continue</button>

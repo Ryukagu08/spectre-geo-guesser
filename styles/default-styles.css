@@ -1,385 +1,378 @@
-@font-face {
-  font-family: 'Gaming';
-  src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+.uiz {
+  margin: 0;
+  padding: 0;
+}
+@ont-face {
+  font-family: 'DIN';
+  src: url('https://fonts.cdnfonts.com/css/din-condensed') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+:root {
+  --spectre-yellow: #FFCB00;
+  --spectre-pink: #F73D72;
+  --spectre-green: #24EDAE;
+  --spectre-blue: #4BF9FC;
+  --spectre-black: #000000;
+  --spectre-white: #F2F2F2;
+  --spectre-grey: #414141;
+  --spectre-light-grey: #D4D4CC;
+}
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  background-color: var(--spectre-black);
+  color: var(--spectre-white);
+  margin: 0;
+  padding: 0;
+}
+ 
+h1 {
+  font-size: 0rem;
+  margin: 0.5rem 0;
+}
+ 
+#logo-image {
+  width: 40%;
+  height: auto;
+  transition: transform 0.3s ease;
+  margin-top: 1rem;
+}
+ 
+#logo-image:hover {
+  transform: scale(1.02);
 }
 
-@media only screen and (min-width: 0px){
-    .quiz-container {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .left-controls, .right-controls {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 0.5rem;
-        margin: 0.5rem 0;
-    }
-    body{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 2rem;
-        text-align: center;
-        background-color: #1a1a1a;
-        color: white;
-        margin: 0;
-        padding: 0;
-    }
-    
-    h1{
-        font-size: 0rem;
-        margin: 1rem 0;
-    }
-    
-    #logo-image{
-        width: 40%;
-        height: auto;
-        transition: transform 0.3s ease;
-    }
-    
-    #logo-image:hover {
-        transform: scale(1.02);
-    }
-    
-    /* Button styling */
-    .btn{            
-        width: 75px;  
-        height: 25pt;
-        font-size: 0.75rem;
-        color: white;
-        background-color: #333;
-        border: 1px solid #555;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    
-    .btn:hover {
-        background-color: #444;
-        transform: translateY(-2px);
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    }
-    
-    .btn:active {
-        transform: translateY(0);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Button styles by function */
-    .utility-btn {
-        background-color: #2a2a2a;
-        border-color: #666;
-    }
-    
-    .map-btn {
-        background-color: #232323;
-        border-color: #555;
-    }
-    
-    .confirm-btn {
-        visibility: hidden;
-        background-color: #333;
-        margin: 0 5px;
-    }
-    
-    #btn-yes {
-        border-color: #3a3;
-    }
-    
-    #btn-yes:hover {
-        background-color: #3a3;
-    }
-    
-    #btn-no {
-        border-color: #a33;
-    }
-    
-    #btn-no:hover {
-        background-color: #a33;
-    }
-    
-    #btn-submit {
-        border-color: #33a;
-    }
-    
-    #btn-submit:hover {
-        background-color: #33a;
-    }
-    
-    #btn-continue {
-        border-color: #3a3;
-    }
-    
-    #btn-continue:hover {
-        background-color: #3a3;
-    }
-    
-    /* Start button */
-    .play-btn {
-        display: inline-block;
-        padding: 12px 30px;
-        font-size: 1.5rem;
-        background-color: #333;
-        color: white;
-        border: 2px solid #555;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        margin-top: 20px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-    
-    .play-btn:hover {
-        background-color: #555;
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Quiz container */
-    .quiz{
-        margin: 0rem;
-        padding: 1rem;
-    }
-    
-    .quiz-container {
-        display: flex;
-        flex-direction: column; 
-        align-items: center; 
-        justify-content: center;
-        text-align: center;
-        gap: 1rem; 
-        max-width: 100vw; 
-        margin: 0 auto;
-        width: 100%;
-    }
-    
-    .utilities{
-        display: flex;
-        flex-direction: row; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 0.5rem;
-        width: 100%;
-        margin: 0.5rem 0;
-    }
-    
-    .maps {
-        display: flex;
-        flex-direction: row; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 0.5rem;
-        width: 100%;
-        margin: 0.5rem 0;
-    }
-    
-    /* Image container */
-    .quiz-image {
-        position: relative;
-        display: flex;
-        margin: 1rem auto;
-        max-width: 90vw;
-        max-height: 70vh;
-        width: auto;
-        height: auto;
-        overflow: hidden;
-    }
-    
-    .image {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-    }
-    
-    #geo-image{
-        visibility: visible;
-    }
-    
-    #clickable-image{
-        visibility: hidden;
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        z-index: 9;
-    }
-
-    #dot {
-        visibility: hidden;
-        position: absolute; 
-        left: 200px;
-        top: 200px;
-        z-index: 10;
-        transform: translate(-50%, -50%);
-        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
-    }
-    
-    /* Game status display */
-    #result, #map-name {
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        margin: 0.5rem;
-        font-size: 1.5rem;
-    }
-    
-    /* Welcome screen styling */
-    .welcome-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-    
-    .welcome-text {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-    
-    .discord-link {
-        color: #7289DA;
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-    
-    .discord-link:hover {
-        color: #99AAE4;
-        text-decoration: underline;
-    }
-    
-    #startup-image {
-        width: 100%;
-        max-width: 360px;
-        height: auto;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
-        margin-bottom: 1rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    #startup-image:hover {
-        transform: scale(1.02);
-    }
-    
-    .confirm-buttons {
-        margin: 0.5rem 0;
-    }
+.game-layout {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-@media only screen and (min-width: 964px) {
-    body {
-        font-size: 2rem;
-    }
-    
-    #logo-image {
-        width: 40%;
-        height: auto;
-    }
-    
-    .btn {            
-        width: 150px;  
-        height: 50pt;
-        font-size: 1.5rem;
-    }
-    
-    .play-btn {
-        font-size: 2rem;
-        padding: 15px 40px;
-    }
-    
-    /* Main layout */
-    .game-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin: 0 auto;
-    }
-    
-    /* Vertically stacked side buttons */
-    .left-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin-right: 2rem;
-    }
-    
-    .right-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin-left: 2rem;
-    }
-    
-    /* Centered image */
-    .center-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .quiz-image {
-        max-width: 720px;
-        max-height: 720px;
-    }
-    
-    /* Map buttons below the image */
-    .maps {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 1rem;
-        width: 100%;
-    }
-    
-    #result, #map-name {
-        font-size: 2rem;
-    }
+.left-controls {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-    
-    /* Bottom maps bar */
-    .maps {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        width: 100%;
-        padding: 1rem 0;
-        order: 3;
-    }
-    
-    .quiz-image {
-        width: 720px;
-        height: 720px;
-        order: 2;
-    }
-    
-    .image{
-        width: 720px;
-        height: 720px;
-    }
-    
-    #result, #map-name {
-        font-size: 2rem;
-    }
-    
-    .welcome-container {
-        max-width: 1000px;
-        padding: 3rem;
-    }
-    
-    .welcome-text {
-        font-size: 1.5rem;
-    }
-    
-    #startup-image {
-        max-width: 500px;
-    }
+ 
+.right-controls {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.center-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+.maps {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+ 
+.quiz-image {
+  position: relative;
+  display: flex;
+  margin: 0.5rem auto;
+  max-width: 720px;
+  max-height: 720px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+ 
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+ 
+.map-btn {
+  position: relative;
+  width: 150px;
+  height: 100px !important;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  border: 2px solid var(--spectre-light-grey);
+  color: var(--spectre-white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.map-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.map-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.6;
+}
+
+#btn-mill {
+  background-image: url('../assets/thumbnails/Mill.png');
+}
+ 
+#btn-metro {
+  background-image: url('../assets/thumbnails/Metro.png');
+}
+ 
+#btn-skyway {
+  background-image: url('../assets/thumbnails/Skyway.png');
+}
+ 
+#btn-commons {
+  background-image: url('../assets/thumbnails/Commons.png');
+}
+ 
+#btn-canal {
+  background-image: url('../assets/thumbnails/Canal.png');
+}
+
+.confirm-buttons {
+  margin: 0;
+  padding: 0;
+}
+ 
+.confirm-btn {
+  visibility: hidden;
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+  font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1rem;
+  color: var(--spectre-white);
+  background-color: var(--spectre-grey);
+  border: 1px solid var(--spectre-light-grey);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+ 
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.utility-btn {
+  width: 150px;
+  height: 50px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--spectre-grey);
+}
+
+.btn:hover:not(.map-btn) {
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+}
+ 
+#btn-map, #btn-answer, #btn-clear {
+  width: 150px;
+  height: 50px !important;
+  background-color: var(--spectre-grey);
+  color: var(--spectre-white);
+  border: 1px solid var(--spectre-light-grey);
+}
+ 
+#btn-map:hover, #btn-answer:hover, #btn-clear:hover {
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+}
+ 
+#btn-yes {
+  border-color: var(--spectre-light-grey);
+}
+ 
+#btn-yes:hover {
+  border-color: var(--spectre-light-grey);
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+}
+ 
+#btn-no {
+  border-color: var(--spectre-light-grey);
+}
+ 
+#btn-no:hover {
+  border-color: var(--spectre-light-grey);
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+}
+ 
+#result {
+  margin-top: 1.4rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+ 
+#map-name {
+  margin-top: 0.5rem;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#dot {
+  visibility: hidden;
+  position: absolute; 
+  left: 200px;
+  top: 200px;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+}
+ 
+#geo-image {
+  visibility: visible;
+}
+#clickable-image {
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 9;
+}
+ 
+.welcome-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+ 
+.welcome-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+ 
+.discord-link {
+  color: var(--spectre-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+ 
+.discord-link:hover {
+  color: var(--spectre-pink);
+  text-decoration: underline;
+}
+ 
+#startup-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+ 
+#startup-image:hover {
+  transform: scale(1.02);
+}
+
+.play-btn {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--spectre-grey);
+  color: var(--spectre-white);
+  border: 1px solid var(--spectre-light-grey);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  margin: 20px auto 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.play-btn:hover {
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+@media only screen and (max-width: 963px) {
+  .game-layout {
+    flex-direction: column;
+  }
+  
+  .left-controls, .right-controls {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+  
+  .btn {
+    width: auto;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  .quiz-image {
+    max-width: 90vw;
+    max-height: 50vh;
+  }
 }
