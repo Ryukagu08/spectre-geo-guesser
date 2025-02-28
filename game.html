@@ -18,38 +18,44 @@
         <div id="result">Where is this image?</div>
         
         <div class="game-layout">
-            <div class="left-controls">
-                <button class="btn utility-btn map-btn" id="btn-map">Get Map</button>
-                <button class="btn utility-btn" id="btn-answer">Get Answer</button>
-                <button class="btn utility-btn" id="btn-clear">Clear Map</button>
-            </div>
-
             <div class="center-content">
-                <div class="maps">
-                    <button class="btn map-btn" id="btn-mill"><span>Mill</span></button>
-                    <button class="btn map-btn" id="btn-metro"><span>Metro</span></button>
-                    <button class="btn map-btn" id="btn-skyway"><span>Skyway</span></button>
-                    <button class="btn map-btn" id="btn-commons"><span>Commons</span></button>
-                    <button class="btn map-btn" id="btn-canal"><span>Canal</span></button>
+                <div class="section-container maps-container">
+                    <div class="maps">
+                        <button class="btn map-btn" id="btn-mill"><span>Mill</span></button>
+                        <button class="btn map-btn" id="btn-metro"><span>Metro</span></button>
+                        <button class="btn map-btn" id="btn-skyway"><span>Skyway</span></button>
+                        <button class="btn map-btn" id="btn-commons"><span>Commons</span></button>
+                        <button class="btn map-btn" id="btn-canal"><span>Canal</span></button>
+                    </div>
                 </div>
                 
-                <div class="quiz-image">
-                    <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
-                    <img width="720" height="720" class="image" id="clickable-image"> 
-                    <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
+                <div class="section-container">
+                    <div class="quiz-image">
+                        <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
+                        <img width="720" height="720" class="image" id="clickable-image"> 
+                        <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
+                    </div>
                 </div>
                 
                 <div id="map-name">&nbsp;</div>
                 
-                <div class="confirm-buttons">
-                    <button class="btn confirm-btn" id="btn-yes">Yes</button>
-                    <button class="btn confirm-btn" id="btn-no">No</button> 
+                <div class="controls-container">
+                    <div class="controls-row primary-controls">
+                        <button class="btn utility-btn" id="btn-map">Get Map</button>
+                        <button class="btn utility-btn" id="btn-submit">Submit</button>
+                    </div>
+                    
+                    <div class="controls-row secondary-controls">
+                        <button class="btn utility-btn" id="btn-answer">Get Answer</button>
+                        <button class="btn utility-btn" id="btn-clear">Clear Map</button>
+                        <button class="btn utility-btn" id="btn-continue">Continue</button>
+                    </div>
+                    
+                    <div class="confirm-buttons">
+                        <button class="btn confirm-btn" id="btn-yes">Yes</button>
+                        <button class="btn confirm-btn" id="btn-no">No</button> 
+                    </div>
                 </div>
-            </div>
-
-            <div class="right-controls">
-                <button class="btn utility-btn" id="btn-submit">Submit</button>
-                <button class="btn utility-btn" id="btn-continue">Continue</button>
             </div>
         </div>
     </div>
