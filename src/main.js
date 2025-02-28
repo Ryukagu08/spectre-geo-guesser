@@ -1,4 +1,3 @@
-
 //variables
 let knowsAnswer = false;
 
@@ -71,7 +70,7 @@ document.querySelector("#btn-submit").addEventListener("click", function() {
 
 document.querySelector("#btn-continue").addEventListener("click", function() {
     if (!knowsAnswer){
-        element_result.innerHTML = "You don't know the answer, would you still like to continue? (after yes hit continue again)";
+        element_result.innerHTML = "You don't know the answer, would you still like to continue?";
         document.getElementById("btn-yes").style.visibility = "visible";
         document.getElementById("btn-no").style.visibility = "visible";        
         return;
@@ -153,6 +152,34 @@ document.querySelectorAll(".map-btn").forEach(button => {
 
 document.querySelector("#btn-yes").addEventListener("click", function() {
     knowsAnswer = true;
+    
+    // Add continue functionality directly here
+    if (flattenedImages.length == 0) {
+        element_result.innerHTML = "Thats the last image! Hope you had fun.";
+        return;
+    }
+    getRandomImage();
+    
+    knowsAnswer = false; // Reset for new image
+
+    document.getElementById("btn-yes").style.visibility = "hidden";
+    document.getElementById("btn-no").style.visibility = "hidden";  
+
+    document.querySelector("#clickable-image").style.visibility = "hidden";
+    document.querySelector("#dot").style.visibility = "hidden";
+    mapCheck = "Clear";
+
+    element_result.innerHTML = "Where is this image?";
+    element_map_name.innerHTML = "&nbsp;";
+});
+
+document.querySelector("#btn-no").addEventListener("click", function() {
+    // Hide the confirmation buttons since user doesn't want to continue
+    document.getElementById("btn-yes").style.visibility = "hidden";
+    document.getElementById("btn-no").style.visibility = "hidden";
+    
+    // Update the result text to provide clarity
+    element_result.innerHTML = "Continue when you're ready.";
 });
 
 

@@ -1,8 +1,8 @@
-.uiz {
+.quiz {
   margin: 0;
   padding: 0;
 }
-@ont-face {
+@font-face {
   font-family: 'DIN';
   src: url('https://fonts.cdnfonts.com/css/din-condensed') format('woff2');
   font-weight: normal;
@@ -62,26 +62,6 @@ h1 {
   padding: 0 1rem;
 }
 
-.left-controls {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
- 
-.right-controls {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 .center-content {
   width: 100%;
   display: flex;
@@ -92,35 +72,55 @@ h1 {
 .maps {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.7rem;
+  width: 100%;
 }
- 
+
+.section-container {
+  background-color: rgba(65, 65, 65, 0.5);
+  border: 2px solid var(--spectre-yellow);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.8rem 0;
+  width: 100%;
+  max-width: 850px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.maps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
 .quiz-image {
   position: relative;
   display: flex;
-  margin: 0.5rem auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   max-width: 720px;
-  max-height: 720px;
   width: 100%;
-  height: auto;
+  height: 720px;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
 }
  
 .image {
   max-width: 100%;
   max-height: 100%;
   width: auto;
-  height: 100%;
+  height: auto;
   object-fit: contain;
 }
  
 .map-btn {
   position: relative;
-  width: 150px;
-  height: 100px !important;
+  width: 130px;
+  height: 85px !important;
   padding: 0;
   overflow: hidden;
   text-align: center;
@@ -165,9 +165,35 @@ h1 {
   background-image: url('../assets/thumbnails/Canal.png');
 }
 
+.controls-container {
+  width: 100%;
+  max-width: 850px;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primary-controls {
+  margin-top: 0.8rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.secondary-controls {
+  margin-bottom: 0.5rem;
+}
+
 .confirm-buttons {
-  margin: 0;
+  margin: 0.5rem 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
  
 .confirm-btn {
@@ -216,7 +242,7 @@ h1 {
   background-color: var(--spectre-yellow);
   color: var(--spectre-black);
 }
- 
+
 #btn-map, #btn-answer, #btn-clear {
   width: 150px;
   height: 50px !important;
@@ -251,12 +277,19 @@ h1 {
 }
  
 #result {
-  margin-top: 1.4rem;
-  margin-bottom: 1rem;
-  padding: 0;
-  font-size: 1.75rem;
+  width: 100%;
+  max-width: 850px;
+  margin: 1.2rem auto;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--spectre-yellow);
+  background-color: rgba(65, 65, 65, 0.5);
+  border-radius: 6px;
+  border: 2px solid var(--spectre-yellow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
  
 #map-name {
@@ -280,99 +313,573 @@ h1 {
 #geo-image {
   visibility: visible;
 }
+
 #clickable-image {
   visibility: hidden;
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   z-index: 9;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* Index page styles */
+.index-body {
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 }
  
 .welcome-container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(65, 65, 65, 0.3);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(75, 249, 252, 0.1);
+}
+
+.welcome-header {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--spectre-blue);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
 }
  
 .welcome-text {
   font-size: 1.2rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  max-width: 600px;
+}
+
+.notice {
+  background-color: rgba(247, 61, 114, 0.2);
+  border-left: 3px solid var(--spectre-pink);
+  padding: 1.3rem 0.6rem 0 0.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0 4px 4px 0;
+  max-width: 600px;
+  width: 100%;
 }
  
 .discord-link {
   color: var(--spectre-blue);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  font-weight: bold;
 }
  
 .discord-link:hover {
   color: var(--spectre-pink);
   text-decoration: underline;
 }
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
  
 #startup-image {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
  
 #startup-image:hover {
-  transform: scale(1.02);
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(75, 249, 252, 0.3);
 }
 
 .play-btn {
   display: inline-block;
-  width: 150px;
-  height: 50px;
-  font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+  padding: 0.8rem 3rem;
   font-size: 1.5rem;
   font-weight: bold;
   background-color: var(--spectre-grey);
   color: var(--spectre-white);
-  border: 1px solid var(--spectre-light-grey);
-  border-radius: 4px;
+  border: 1px solid rgba(212, 212, 204, 0.3);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
-  margin: 20px auto 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
 }
- 
+
+.play-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.6s;
+  opacity: 0;
+}
+
 .play-btn:hover {
   background-color: var(--spectre-yellow);
   color: var(--spectre-black);
-  transform: translateY(-2px);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 7px 20px rgba(255, 203, 0, 0.5);
 }
+
+.play-btn:hover::before {
+  animation: shine 1.2s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+      left: -50%;
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      left: 150%;
+      opacity: 0;
+  }
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--spectre-light-grey);
+  font-size: 0.9rem;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* General responsive adjustments */
+@media screen and (max-width: 1200px) {
+  #logo-image {
+    width: 50%;
+  }
+  
+  .section-container {
+    max-width: 90%;
+  }
+  
+  .controls-container {
+    max-width: 90%;
+  }
+  
+  #result {
+    max-width: 90%;
+  }
+}
+
+/* Tablet and smaller screens */
+@media screen and (max-width: 900px) {
+  body {
+    font-size: 1.6rem;
+  }
+  
+  #logo-image {
+    width: o0%;
+  }
+  
+  .maps {
+    gap: 0.5rem;
+  }
+  
+  .map-btn {
+    width: 110px;
+    height: 70px !important;
+  }
+  
+  .quiz-image {
+    height: 600px;
+  }
+  
+  #map-name {
+    font-size: 1.7rem;
+  }
+  
+  #result {
+    font-size: 1.5rem;
+    padding: 0.4rem 1rem;
+  }
+  
+  /* Index page */
+  .welcome-container {
+    max-width: 90%;
+  }
+  
+  #startup-image {
+    max-width: 450px;
+  }
+}
+
+/* Large phones and small tablets */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 1.4rem;
+  }
+  
+  #logo-image {
+    width: 70%;
+  }
+  
+  .section-container {
+    padding: 0.8rem;
+  }
+  
+  .maps {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .map-btn {
+    width: 90px;
+    height: 60px !important;
+  }
+  
+  .quiz-image {
+    height: 500px;
+  }
+  
+  .controls-row {
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    width: 130px;
+    height: 45px;
+    font-size: 0.9rem;
+  }
+  
+  .utility-btn {
+    width: 130px;
+    height: 45px;
+  }
+  
+  #map-name {
+    font-size: 1.5rem;
+  }
+  
+  #result {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.8rem;
+    margin: 1rem auto;
+  }
+  
+  /* Index page */
+  .welcome-header {
+    font-size: 1.8rem;
+  }
+  
+  .play-btn {
+    padding: 0.7rem 2rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 1.2rem;
+  }
+  
+  #logo-image {
+    width: 90%;
+  }
+  
+  .section-container {
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+  }
+  
+  .maps-container {
+    padding: 0.5rem 0.3rem;
+  }
+  
+  .maps {
+    gap: 0.3rem;
+  }
+  
+  .map-btn {
+    width: 65px;
+    height: 45px !important;
+    font-size: 0.8rem;
+  }
+  
+  .map-btn span {
+    font-size: 0.8rem;
+  }
+  
+  .quiz-image {
+    height: 350px;
+  }
+  
+  .btn {
+    width: 110px;
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  
+  .utility-btn {
+    width: 110px;
+    height: 40px;
+  }
+  
+  .controls-row {
+    gap: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .primary-controls, .secondary-controls {
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .confirm-buttons {
+    gap: 0.5rem;
+  }
+  
+  #map-name {
+    font-size: 1.3rem;
+    margin-top: 0.3rem;
+  }
+  
+  #result {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.8rem auto;
+  }
+  
+  /* Index page */
+  main {
+    padding: 1rem;
+  }
+  
+  .welcome-container {
+    padding: 1.2rem;
+  }
+  
+  .welcome-header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  #startup-image {
+    max-width: 90%;
+  }
+  
+  .play-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .notice {
+    padding: 1rem 0.5rem 0 0.5rem;
+    margin-top: 1.2rem;
+  }
+  
+  footer {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 1rem;
+  }
+  
+  .map-btn {
+    width: 55px;
+    height: 38px !important;
+  }
+  
+  .map-btn span {
+    font-size: 0.7rem;
+  }
+  
+  .quiz-image {
+    height: 280px;
+  }
+  
+  .btn, .utility-btn {
+    width: 90px;
+    height: 35px;
+    font-size: 0.7rem;
+  }
+  
+  #map-name {
+    font-size: 1.1rem;
+  }
+  
+  #result {
+    font-size: 1rem;
+  }
+  
+  /* Index page */
+  .welcome-header {
+    font-size: 1.3rem;
+  }
+  
+  .welcome-text {
+    font-size: 0.8rem;
+  }
+  
+  .play-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for orientation changes */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  #logo-image {
+    width: 30%;
+    margin-top: 0.5rem;
+  }
+  
+  .section-container {
+    margin: 0.4rem 0;
+  }
+  
+  .quiz-image {
+    height: 300px;
+  }
+  
+  /* Move map selection to the side for landscape on small screens */
+  .game-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .maps-container {
+    width: 30%;
+  }
+  
+  .maps {
+    flex-direction: column;
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .center-content {
+    width: 70%;
+  }
+  
+  /* Index page in landscape */
+  .content-container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  #startup-image {
+    max-width: 45%;
+    margin-right: 1rem;
+  }
+  
+  .notice {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Fix for touch devices */
+@media (hover: none) {
+  .btn:hover, .map-btn:hover, .play-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .btn:active, .map-btn:active, .play-btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+/* Fix for the image positioning on small screens */
+@media screen and (max-width: 720px) {
+  #clickable-image, #geo-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Existing media query enhancements */
 @media only screen and (max-width: 963px) {
   .game-layout {
     flex-direction: column;
   }
   
-  .left-controls, .right-controls {
-    position: static;
-    transform: none;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0.5rem 0;
-  }
-  
-  .btn {
-    width: auto;
-    padding: 0.3rem 0.7rem;
-    font-size: 0.8rem;
-  }
-  
   .quiz-image {
-    max-width: 90vw;
-    max-height: 50vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
