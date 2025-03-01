@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 @font-face {
   font-family: 'DIN';
   src: url('https://fonts.cdnfonts.com/css/din-condensed') format('woff2');
@@ -52,6 +53,7 @@ h1 {
   transform: scale(1.02);
 }
 
+/* LAYOUT STRUCTURE */
 .game-layout {
   position: relative;
   display: flex;
@@ -68,22 +70,24 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
- 
-.maps {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 0.7rem;
+
+.image-with-controls {
+  position: relative;
+  margin: 0.4rem auto; /* Reduced from 2rem to 0.4rem for consistent spacing */
   width: 100%;
+  max-width: 950px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
+/* SECTION CONTAINERS */
 .section-container {
   background-color: rgba(65, 65, 65, 0.5);
   border: 2px solid var(--spectre-yellow);
   border-radius: 8px;
   padding: 1rem;
-  margin: 0.8rem 0;
+  margin: 0.4rem 0; /* Reduced from 0.8rem to 0.4rem for consistent spacing */
   width: 100%;
   max-width: 850px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -96,17 +100,31 @@ h1 {
   padding: 1rem 0.5rem;
 }
 
+.image-container {
+  position: relative;
+}
+
+.image-with-controls .section-container {
+  width: 720px;
+  flex-shrink: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* QUIZ IMAGE */
 .quiz-image {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 720px;
-  width: 100%;
+  width: 720px;
   height: 720px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
  
 .image {
@@ -116,7 +134,44 @@ h1 {
   height: auto;
   object-fit: contain;
 }
+
+#dot {
+  visibility: hidden;
+  position: absolute; 
+  left: 200px;
+  top: 200px;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+}
  
+#geo-image {
+  visibility: visible;
+}
+
+#clickable-image {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* MAPS ROW */
+.maps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+}
+
 .map-btn {
   position: relative;
   width: 130px;
@@ -165,41 +220,7 @@ h1 {
   background-image: url('../assets/thumbnails/Canal.png');
 }
 
-.controls-container {
-  width: 100%;
-  max-width: 850px;
-}
-
-.controls-row {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.primary-controls {
-  margin-top: 0.8rem;
-  margin-bottom: 0.6rem;
-  display: flex;
-  justify-content: center;
-}
-
-.secondary-controls {
-  margin-bottom: 0.5rem;
-}
-
-.confirm-buttons {
-  margin: 0.5rem 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
- 
-.confirm-btn {
-  visibility: hidden;
-}
-
+/* CONTROL BUTTONS - GENERAL */
 .btn {
   width: 150px;
   height: 50px;
@@ -217,69 +238,216 @@ h1 {
   align-items: center;
   justify-content: center;
 }
- 
-.btn:hover {
+
+/* Regular button hover effects */
+.btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
   transform: translateY(-2px);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
  
-.btn:active {
+.btn:active:not(.icon-btn):not(.skip-btn) {
   transform: translateY(0);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.utility-btn {
-  width: 150px;
-  height: 50px;
+/* ICON BUTTONS */
+.icon-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--spectre-pink);
+  width: 60px !important;
+  height: 40px !important;
+  border-radius: 4px;
+  overflow: visible;
+  transition: color 0.3s;
+  position: relative;
+}
+
+/* SKIP BUTTON */
+.skip-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--spectre-pink);
+  width: 60px !important;
+  height: 40px !important;
+  border-radius: 4px;
+  overflow: visible;
+  transition: color 0.3s;
+  position: relative;
+}
+
+/* ICON STYLES */
+.icon-wrapper, .skip-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: color 0.3s;
+}
+
+.icon-wrapper i, .skip-icon i {
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+
+/* TOOLTIP TEXT STYLES */
+.icon-text, .skip-text {
+  position: absolute;
+  opacity: 0;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background-color: var(--spectre-yellow);
+  color: var(--spectre-black);
+  padding: 5px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: bold;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 30;
+}
+
+/* POSITIONING CONTAINERS */
+/* Left side controls */
+.top-left-controls {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  top: 0;
+  left: 33px;
+  padding: 1rem;
+  z-index: 20;
+}
+
+/* Right side controls */
+.top-right-controls {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: -2px;
+  right: 33px;
+  padding: 1rem;
+  z-index: 20;
+}
+
+/* Skip button placement */
+.top-right-controls .skip-btn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+/* Submit button placement */
+#btn-submit {
+  position: absolute;
+  right: 1rem;
+  top: 120px;
+  width: 60px !important;
+  height: 40px !important;
+  background-color: transparent;
+  color: var(--spectre-pink);
+  border: none;
+  overflow: visible;
+}
+
+/* Confirmation buttons container */
+.confirm-buttons-container {
+  position: absolute;
+  right: -70px;
+  top: 140px;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.confirm-buttons {
+  margin: 0.5rem 0;
   padding: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: var(--spectre-grey);
+  gap: 1rem;
+}
+ 
+.confirm-btn {
+  visibility: hidden;
 }
 
-.btn:hover:not(.map-btn) {
+/* HOVER EFFECTS */
+/* Icon-only hover effects */
+.icon-btn:hover .icon-wrapper i,
+.skip-btn:hover .skip-icon i,
+#btn-submit:hover .icon-wrapper i {
+  color: var(--spectre-yellow);
+}
+
+/* Tooltip positioning and display */
+/* Right buttons tooltips */
+.top-right-controls .skip-text,
+.top-right-controls .icon-text {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+/* Left buttons tooltips */
+.top-left-controls .icon-text {
+  top: 50%;
+  right: 100%;
+  left: auto;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+/* Show tooltips on hover */
+.icon-btn:hover .icon-text,
+.skip-btn:hover .skip-text {
+  opacity: 1;
+}
+
+/* Tooltip arrows */
+.top-right-controls .skip-text:before,
+.top-right-controls .icon-text:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--spectre-yellow) transparent transparent;
+}
+
+.top-left-controls .icon-text:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--spectre-yellow);
+}
+
+/* SPECIFIC BUTTONS */
+#btn-yes, #btn-no {
+  border-color: var(--spectre-light-grey);
+}
+ 
+#btn-yes:hover, #btn-no:hover {
+  border-color: var(--spectre-light-grey);
   background-color: var(--spectre-yellow);
   color: var(--spectre-black);
 }
 
-#btn-map, #btn-answer, #btn-clear {
-  width: 150px;
-  height: 50px !important;
-  background-color: var(--spectre-grey);
-  color: var(--spectre-white);
-  border: 1px solid var(--spectre-light-grey);
-}
- 
-#btn-map:hover, #btn-answer:hover, #btn-clear:hover {
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
-}
- 
-#btn-yes {
-  border-color: var(--spectre-light-grey);
-}
- 
-#btn-yes:hover {
-  border-color: var(--spectre-light-grey);
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
-}
- 
-#btn-no {
-  border-color: var(--spectre-light-grey);
-}
- 
-#btn-no:hover {
-  border-color: var(--spectre-light-grey);
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
-}
- 
+/* DISPLAY ELEMENTS */
 #result {
   width: 100%;
   max-width: 850px;
-  margin: 1.2rem auto;
+  margin: 0.4rem auto; /* Changed from 1.2rem to 0.4rem for consistency */
   padding: 0.5rem 1.5rem;
   font-size: 1.8rem;
   text-transform: uppercase;
@@ -293,41 +461,17 @@ h1 {
 }
  
 #map-name {
-  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 850px;
+  margin: 0.4rem auto; /* Changed from 0.5rem auto 0.8rem to 0.4rem for consistency */
   padding: 0;
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
+  text-align: center;
 }
 
-#dot {
-  visibility: hidden;
-  position: absolute; 
-  left: 200px;
-  top: 200px;
-  z-index: 10;
-  transform: translate(-50%, -50%);
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
-}
- 
-#geo-image {
-  visibility: visible;
-}
-
-#clickable-image {
-  visibility: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 9;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain;
-}
-
-/* Index page styles */
+/* INDEX PAGE STYLING */
 .index-body {
   line-height: 1.6;
   display: flex;
@@ -501,17 +645,14 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* MEDIA QUERIES */
 /* General responsive adjustments */
 @media screen and (max-width: 1200px) {
   #logo-image {
     width: 50%;
   }
   
-  .section-container {
-    max-width: 90%;
-  }
-  
-  .controls-container {
+  .section-container:not(.image-with-controls .section-container) {
     max-width: 90%;
   }
   
@@ -527,7 +668,7 @@ footer {
   }
   
   #logo-image {
-    width: o0%;
+    width: 50%;
   }
   
   .maps {
@@ -537,10 +678,6 @@ footer {
   .map-btn {
     width: 110px;
     height: 70px !important;
-  }
-  
-  .quiz-image {
-    height: 600px;
   }
   
   #map-name {
@@ -560,6 +697,68 @@ footer {
   #startup-image {
     max-width: 450px;
   }
+  
+  /* Responsive adjustment for controls */
+  .top-left-controls,
+  .top-right-controls,
+  .confirm-buttons-container {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .image-with-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-with-controls .section-container,
+  .quiz-image {
+    width: 720px;
+    height: 720px;
+  }
+  
+  .confirm-buttons {
+    visibility: visible;
+    flex-direction: row;
+  }
+  
+  .icon-btn, .skip-btn {
+    width: 50px !important;
+    height: 40px !important;
+  }
+  
+  .icon-wrapper i, .skip-icon i {
+    font-size: 1.5rem;
+  }
+  
+  .icon-text, .skip-text {
+    font-size: 0.8rem;
+  }
+  
+  /* Adjust tooltip positions for mobile */
+  .top-left-controls .icon-text,
+  .top-right-controls .icon-text,
+  .top-right-controls .skip-text {
+    top: -35px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+  
+  .top-left-controls .icon-text:before,
+  .top-right-controls .icon-text:before,
+  .top-right-controls .skip-text:before {
+    top: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    border-color: var(--spectre-yellow) transparent transparent transparent;
+  }
 }
 
 /* Large phones and small tablets */
@@ -572,7 +771,7 @@ footer {
     width: 70%;
   }
   
-  .section-container {
+  .section-container:not(.image-with-controls .section-container) {
     padding: 0.8rem;
   }
   
@@ -586,23 +785,16 @@ footer {
     height: 60px !important;
   }
   
+  .image-with-controls .section-container,
   .quiz-image {
-    height: 500px;
-  }
-  
-  .controls-row {
-    flex-wrap: wrap;
+    width: 650px;
+    height: 650px;
   }
   
   .btn {
     width: 130px;
     height: 45px;
     font-size: 0.9rem;
-  }
-  
-  .utility-btn {
-    width: 130px;
-    height: 45px;
   }
   
   #map-name {
@@ -614,7 +806,7 @@ footer {
     padding: 0.3rem 0.8rem;
     margin: 1rem auto;
   }
-  
+
   /* Index page */
   .welcome-header {
     font-size: 1.8rem;
@@ -624,10 +816,16 @@ footer {
     padding: 0.7rem 2rem;
     font-size: 1.2rem;
   }
+  
+  /* Smaller screens */
+  .top-left-controls,
+  .top-right-controls {
+    flex-wrap: wrap;
+  }
 }
 
 /* Mobile phones */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 650px) {
   body {
     font-size: 1.2rem;
   }
@@ -636,7 +834,7 @@ footer {
     width: 90%;
   }
   
-  .section-container {
+  .section-container:not(.image-with-controls .section-container) {
     padding: 0.6rem;
     margin: 0.5rem 0;
   }
@@ -659,7 +857,9 @@ footer {
     font-size: 0.8rem;
   }
   
+  .image-with-controls .section-container,
   .quiz-image {
+    width: 350px;
     height: 350px;
   }
   
@@ -667,21 +867,6 @@ footer {
     width: 110px;
     height: 40px;
     font-size: 0.8rem;
-  }
-  
-  .utility-btn {
-    width: 110px;
-    height: 40px;
-  }
-  
-  .controls-row {
-    gap: 0.3rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .primary-controls, .secondary-controls {
-    margin-top: 0.5rem;
-    margin-bottom: 0.3rem;
   }
   
   .confirm-buttons {
@@ -736,6 +921,21 @@ footer {
     padding: 1rem;
     font-size: 0.8rem;
   }
+  
+  /* Additional mobile adjustments */
+  .icon-btn, .skip-btn {
+    width: 45px !important;
+    height: 35px !important;
+    margin: 0;
+  }
+  
+  .icon-wrapper i, .skip-icon i {
+    font-size: 1.3rem;
+  }
+  
+  .icon-text, .skip-text {
+    font-size: 0.7rem;
+  }
 }
 
 /* Extra small devices */
@@ -753,7 +953,9 @@ footer {
     font-size: 0.7rem;
   }
   
+  .image-with-controls .section-container,
   .quiz-image {
+    width: 280px;
     height: 280px;
   }
   
@@ -784,6 +986,15 @@ footer {
     padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
   }
+  
+  .icon-btn, .skip-btn {
+    width: 40px !important;
+    height: 30px !important;
+  }
+  
+  .icon-wrapper i, .skip-icon i {
+    font-size: 1rem;
+  }
 }
 
 /* Fix for orientation changes */
@@ -793,11 +1004,13 @@ footer {
     margin-top: 0.5rem;
   }
   
-  .section-container {
+  .section-container:not(.image-with-controls .section-container) {
     margin: 0.4rem 0;
   }
   
+  .image-with-controls .section-container,
   .quiz-image {
+    width: 300px;
     height: 300px;
   }
   
@@ -843,7 +1056,7 @@ footer {
 
 /* Fix for touch devices */
 @media (hover: none) {
-  .btn:hover, .map-btn:hover, .play-btn:hover {
+  .btn:hover:not(.skip-btn):not(.icon-btn), .map-btn:hover, .play-btn:hover {
     transform: none;
     box-shadow: none;
   }
@@ -854,32 +1067,21 @@ footer {
   }
 }
 
-/* Fix for the image positioning on small screens */
-@media screen and (max-width: 720px) {
-  #clickable-image, #geo-image {
-    width: 100% !important;
-    height: auto !important;
-  }
-}
-
-/* Existing media query enhancements */
-@media only screen and (max-width: 963px) {
+/* Override for small screens */
+@media screen and (max-width: 963px) {
   .game-layout {
     flex-direction: column;
   }
+}
+
+/* Scrollable container for small screens */
+@media screen and (max-width: 720px) {
+  .image-with-controls {
+    overflow-x: auto;
+  }
   
-  .quiz-image {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    min-height: 320px;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.3);
+  .image-with-controls .section-container {
+    min-width: 350px;
+    min-height: 350px;
   }
 }
