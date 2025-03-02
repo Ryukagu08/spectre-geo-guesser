@@ -1,39 +1,28 @@
 /**
  * Theme Switcher for Spectre Divide Geoguessr
- * 
- * This script handles the theme switching functionality.
- * It loads the selected theme CSS file and saves the user's preference.
  */
 
-// Available themes with their color information and logos
+// Available themes configuration
 const THEMES = {
   S0: {
-    name: "Season 0",
+    name: "SPECTRE",
     file: "styles/S0_style.css",
-    color: "#FFCB00",  // Yellow theme color
+    color: "#FFCB00",
     logo: "assets/Logos/SDGS0Logo.png"
   },
   S1: {
-    name: "Flashpoint",
+    name: "FLASHPOINT",
     file: "styles/S1_style.css",
-    color: "#C6EA34",  // Flashpoint green color
+    color: "#C6EA34",
     logo: "assets/Logos/SDGS1Logo.png"
   }
 };
 
-// Default theme
 const DEFAULT_THEME = 'S0';
-
-// DOM elements
 let themeLink = null;
 let themeSwitcher = null;
-let switcherContainer = null;
 
-/**
- * Initialize the theme switcher
- */
 function initThemeSwitcher() {
-  // Create theme link element if it doesn't exist
   if (!themeLink) {
     themeLink = document.createElement('link');
     themeLink.rel = 'stylesheet';
@@ -41,119 +30,173 @@ function initThemeSwitcher() {
     document.head.appendChild(themeLink);
   }
   
-  // Load saved theme or default
-  loadTheme(getSavedTheme());
+  loadTheme(localStorage.getItem('spectreTheme') || DEFAULT_THEME);
   
-  // Create theme switcher if it doesn't exist on the page yet
   if (!document.getElementById('theme-switcher') && document.body) {
-    createThemeSwitcher();
+    createStylizedThemeSwitcher();
   }
 }
 
-/**
- * Load a specific theme
- * @param {string} themeId - The ID of the theme to load
- */
 function loadTheme(themeId) {
   if (!THEMES[themeId]) {
     themeId = DEFAULT_THEME;
   }
   
-  // Update the CSS link
   themeLink.href = THEMES[themeId].file;
   
-  // Update the logo if it exists
   const logoElement = document.getElementById('logo-image');
   if (logoElement) {
     logoElement.src = THEMES[themeId].logo;
   }
   
-  // Save user preference
+  document.body.setAttribute('data-theme', themeId);
   localStorage.setItem('spectreTheme', themeId);
   
-  // Update the switcher if it exists
   if (themeSwitcher) {
     themeSwitcher.value = themeId;
-    
-    // Apply theme color to the switcher container border
-    if (switcherContainer) {
-      switcherContainer.style.borderColor = THEMES[themeId].color;
-      themeSwitcher.style.borderColor = THEMES[themeId].color;
-    }
   }
 }
 
-/**
- * Get the saved theme from localStorage
- * @returns {string} - The saved theme ID or default theme
- */
-function getSavedTheme() {
-  return localStorage.getItem('spectreTheme') || DEFAULT_THEME;
-}
-
-/**
- * Create the theme switcher UI
- */
-function createThemeSwitcher() {
-  // Create container
-  const container = document.createElement('div');
-  container.className = 'theme-switcher-container';
-  container.innerHTML = `
-    <label for="theme-switcher">Theme:</label>
-    <select id="theme-switcher">
-      ${Object.entries(THEMES).map(([id, theme]) => 
-        `<option value="${id}">${theme.name}</option>`
-      ).join('')}
-    </select>
+function createStylizedThemeSwitcher() {
+  const themeContainer = document.createElement('div');
+  themeContainer.className = 'theme-switcher-container';
+  themeContainer.innerHTML = `
+    <div class="theme-select-wrapper">
+      <select id="theme-switcher" aria-label="Select theme">
+        ${Object.entries(THEMES).map(([id, theme]) => 
+          `<option value="${id}">${theme.name}</option>`
+        ).join('')}
+      </select>
+    </div>
   `;
   
-  // Style the container
-  container.style.position = 'fixed';
-  container.style.top = '10px';
-  container.style.right = '10px';
-  container.style.zIndex = '1000';
-  container.style.background = 'rgba(0,0,0,0.7)';
-  container.style.padding = '5px 10px';
-  container.style.borderRadius = '4px';
-  container.style.color = '#fff';
-  container.style.fontSize = '0.9rem';
-  container.style.border = '2px solid'; // Will set color dynamically
-  container.style.boxShadow = '0 2px 8px rgba(0,0,0,0.5)';
-  
-  // Add to document
-  document.body.appendChild(container);
-  
-  // Get the select element
+  document.body.appendChild(themeContainer);
   themeSwitcher = document.getElementById('theme-switcher');
-  switcherContainer = container;
+  themeSwitcher.value = localStorage.getItem('spectreTheme') || DEFAULT_THEME;
   
-  // Style the select element
-  themeSwitcher.style.backgroundColor = 'rgba(0,0,0,0.5)';
-  themeSwitcher.style.color = '#fff';
-  themeSwitcher.style.border = '1px solid'; // Will set color dynamically
-  themeSwitcher.style.borderRadius = '3px';
-  themeSwitcher.style.padding = '3px 5px';
-  themeSwitcher.style.cursor = 'pointer';
-  themeSwitcher.style.outline = 'none';
-  
-  // Set initial value
-  themeSwitcher.value = getSavedTheme();
-  
-  // Apply initial color
-  const initialTheme = getSavedTheme();
-  container.style.borderColor = THEMES[initialTheme].color;
-  themeSwitcher.style.borderColor = THEMES[initialTheme].color;
-  
-  // Add event listener
   themeSwitcher.addEventListener('change', function() {
     loadTheme(this.value);
   });
+  
+  addThemeSwitcherStyles();
 }
 
-// Initialize when DOM is loaded
+function addThemeSwitcherStyles() {
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    .theme-switcher-container {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+    
+    .theme-select-wrapper {
+      position: relative;
+      width: 160px;
+    }
+    
+    #theme-switcher {
+      appearance: none;
+      width: 100%;
+      padding: 0.6rem 2.5rem 0.6rem 1rem;
+      border-radius: 6px;
+      font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #FFCB00;
+      background-color: rgba(10, 10, 10, 0.85);
+      border: 2px solid #FFCB00;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+    
+    .theme-select-wrapper::after {
+      content: '\\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.8rem;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #FFCB00;
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+    
+    #theme-switcher:hover {
+      border-color: #F73D72;
+      color: #F73D72;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4), 0 1px 18px rgba(0, 0, 0, 0.1);
+    }
+    
+    #theme-switcher:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .theme-select-wrapper:hover::after {
+      color: #F73D72;
+    }
+    
+    #theme-switcher option {
+      background-color: #141414;
+      color: #F2F2F2;
+      font-weight: normal;
+      padding: 10px;
+    }
+    
+    body[data-theme="S1"] #theme-switcher {
+      color: #C6EA34;
+      border-color: #C6EA34;
+    }
+    
+    body[data-theme="S1"] .theme-select-wrapper::after {
+      color: #C6EA34;
+    }
+    
+    body[data-theme="S1"] #theme-switcher:hover {
+      border-color: #F73D72;
+      color: #F73D72;
+    }
+    
+    body[data-theme="S1"] .theme-select-wrapper:hover::after {
+      color: #F73D72;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .theme-switcher-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0.5rem auto;
+        justify-content: center;
+      }
+      
+      .theme-select-wrapper {
+        width: 140px;
+      }
+      
+      #theme-switcher {
+        font-size: 0.8rem;
+        padding: 0.5rem 2rem 0.5rem 0.8rem;
+      }
+    }
+  `;
+  
+  document.head.appendChild(styleElement);
+}
+
 document.addEventListener('DOMContentLoaded', initThemeSwitcher);
 
-// Initialize immediately if document is already loaded
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   initThemeSwitcher();
 }
