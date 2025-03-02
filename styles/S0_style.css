@@ -10,6 +10,7 @@
   --spectre-white: #F2F2F2;
   --spectre-grey: #414141;
   --spectre-light-grey: #D4D4CC;
+  --spectre-red: #FF3A44;
 }
 
 /* Base Body Styles */
@@ -138,6 +139,17 @@ body {
   background-color: rgba(65, 65, 65, 0.5);
   border: 2px solid var(--spectre-yellow);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Result message colors */
+.result-correct {
+  color: var(--spectre-green) !important;
+  font-weight: bold;
+}
+
+.result-incorrect {
+  color: var(--spectre-red) !important;
+  font-weight: bold;
 }
 
 /* Welcome Screen */

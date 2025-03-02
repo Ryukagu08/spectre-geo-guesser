@@ -6,10 +6,11 @@
     --spectre-pink: #F73D72;
     --spectre-green: #24EDAE;
     --spectre-blue: #4BF9FC;
-    --spectre-black: #000000; /* Same as S0 */
+    --spectre-black: #000000;
     --spectre-white: #F2F2F2;
-    --spectre-grey: #414141; /* Same as S0 */
-    --spectre-light-grey: #D4D4CC; /* Same as S0 */
+    --spectre-grey: #414141;
+    --spectre-light-grey: #D4D4CC;
+    --spectre-red: #FF3A44;
     
     /* Flashpoint color - main theme color */
     --flashpoint-green: #C6EA34;
@@ -149,6 +150,17 @@ body {
   background-color: rgba(65, 65, 65, 0.5);
   border: 2px solid var(--theme-primary);
   box-shadow: 0 4px 12px rgba(198, 234, 52, 0.2);
+}
+
+/* Result message colors */
+.result-correct {
+  color: var(--spectre-green) !important;
+  font-weight: bold;
+}
+
+.result-incorrect {
+  color: var(--spectre-red) !important;
+  font-weight: bold;
 }
   
 /* Welcome Screen */

@@ -77,6 +77,7 @@ document.querySelector("#btn-submit").addEventListener("click", function() {
 document.querySelector("#btn-continue").addEventListener("click", function() {
     if (!knowsAnswer){
         element_result.innerHTML = "You don't know the answer, would you still like to continue?";
+        element_result.className = ""; // Reset result class
         document.getElementById("btn-yes").style.visibility = "visible";
         document.getElementById("btn-no").style.visibility = "visible";        
         return;
@@ -85,6 +86,7 @@ document.querySelector("#btn-continue").addEventListener("click", function() {
     if (flattenedImages.length == 0)
     {
         element_result.innerHTML = "Thats the last image! Hope you had fun.";
+        element_result.className = ""; // Reset result class
         return;
     }
     getRandomImage();
@@ -102,6 +104,7 @@ document.querySelector("#btn-continue").addEventListener("click", function() {
     clearMapHighlight();
 
     element_result.innerHTML = "Where is this image?";
+    element_result.className = ""; // Reset result class
     element_map_name.innerHTML = "&nbsp;"
 });
 
@@ -183,6 +186,7 @@ document.querySelector("#btn-yes").addEventListener("click", function() {
     // Add continue functionality directly here
     if (flattenedImages.length == 0) {
         element_result.innerHTML = "Thats the last image! Hope you had fun.";
+        element_result.className = ""; // Reset result class
         return;
     }
     getRandomImage();
@@ -200,6 +204,7 @@ document.querySelector("#btn-yes").addEventListener("click", function() {
     clearMapHighlight();
 
     element_result.innerHTML = "Where is this image?";
+    element_result.className = ""; // Reset result class
     element_map_name.innerHTML = "&nbsp;";
 });
 
@@ -211,6 +216,7 @@ document.querySelector("#btn-no").addEventListener("click", function() {
     
     // Update the result text to provide clarity
     element_result.innerHTML = "Continue when you're ready.";
+    element_result.className = ""; // Reset result class
 });
 
 
@@ -279,15 +285,18 @@ const submitted = (x,y,currentImageData) => {
     if (mapCheck == currentImageData.map){
         if (distanceX < 10 && distanceY < 15){
             element_result.innerHTML = 'You got it right!';
+            element_result.className = 'result-correct'; // Add green text class
             knowsAnswer = true;
         }
         else
         {
-            element_result.innerHTML = 'not quite right';
+            element_result.innerHTML = 'Not quite right';
+            element_result.className = 'result-incorrect'; // Add red text class
         }
     }
     else{
-        element_result.innerHTML = 'wrong map';
+        element_result.innerHTML = 'Wrong map';
+        element_result.className = 'result-incorrect'; // Add red text class
     }
     
 }
