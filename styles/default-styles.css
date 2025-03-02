@@ -1,3 +1,4 @@
+/* Basic styles and resets */
 .quiz {
   margin: 0;
   padding: 0;
@@ -10,29 +11,17 @@
   font-style: normal;
 }
  
-:root {
-  --spectre-yellow: #FFCB00;
-  --spectre-pink: #F73D72;
-  --spectre-green: #24EDAE;
-  --spectre-blue: #4BF9FC;
-  --spectre-black: #000000;
-  --spectre-white: #F2F2F2;
-  --spectre-grey: #414141;
-  --spectre-light-grey: #D4D4CC;
-}
- 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
  
+/* Base styles */
 body {
   font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
   font-size: 2rem;
   text-align: center;
-  background-color: var(--spectre-black);
-  color: var(--spectre-white);
   margin: 0;
   padding: 0;
 }
@@ -73,7 +62,7 @@ h1 {
 
 .image-with-controls {
   position: relative;
-  margin: 0.4rem auto; /* Reduced from 2rem to 0.4rem for consistent spacing */
+  margin: 0.4rem auto;
   width: 100%;
   max-width: 950px;
   display: flex;
@@ -83,14 +72,11 @@ h1 {
 
 /* SECTION CONTAINERS */
 .section-container {
-  background-color: rgba(65, 65, 65, 0.5);
-  border: 2px solid var(--spectre-yellow);
   border-radius: 8px;
   padding: 1rem;
-  margin: 0.4rem 0; /* Reduced from 0.8rem to 0.4rem for consistent spacing */
+  margin: 0.4rem 0;
   width: 100%;
-  max-width: 850px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 520px;
 }
 
 .maps-container {
@@ -98,6 +84,7 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 1rem 0.5rem;
+  max-width: 850px;
 }
 
 .image-container {
@@ -120,10 +107,9 @@ h1 {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 720px;
-  height: 720px;
+  width: 520px;
+  height: 520px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 }
  
@@ -142,7 +128,6 @@ h1 {
   top: 200px;
   z-index: 10;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
  
 #geo-image {
@@ -162,7 +147,7 @@ h1 {
   object-fit: contain;
 }
 
-/* MAPS ROW */
+/* MAP SELECTION BUTTONS */
 .maps {
   display: flex;
   flex-direction: row;
@@ -181,12 +166,10 @@ h1 {
   text-align: center;
   background-position: center;
   background-size: cover;
-  border: 2px solid var(--spectre-light-grey);
-  color: var(--spectre-white);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
  
 .map-btn span {
@@ -196,10 +179,9 @@ h1 {
 
 .map-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  opacity: 0.6;
 }
 
+/* Map background images */
 #btn-mill {
   background-image: url('../assets/thumbnails/Mill.png');
 }
@@ -226,9 +208,6 @@ h1 {
   height: 50px;
   font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
   font-size: 1rem;
-  color: var(--spectre-white);
-  background-color: var(--spectre-grey);
-  border: 1px solid var(--spectre-light-grey);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -241,22 +220,15 @@ h1 {
 
 /* Regular button hover effects */
 .btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
   transform: translateY(-2px);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
  
 .btn:active:not(.icon-btn):not(.skip-btn) {
   transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ICON BUTTONS */
 .icon-btn {
-  background-color: transparent;
-  border: none;
-  color: var(--spectre-pink);
   width: 60px !important;
   height: 40px !important;
   border-radius: 4px;
@@ -267,9 +239,6 @@ h1 {
 
 /* SKIP BUTTON */
 .skip-btn {
-  background-color: transparent;
-  border: none;
-  color: var(--spectre-pink);
   width: 60px !important;
   height: 40px !important;
   border-radius: 4px;
@@ -278,7 +247,7 @@ h1 {
   position: relative;
 }
 
-/* ICON STYLES */
+/* BUTTON ICON STYLES */
 .icon-wrapper, .skip-icon {
   display: flex;
   justify-content: center;
@@ -289,7 +258,7 @@ h1 {
 }
 
 .icon-wrapper i, .skip-icon i {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   transition: color 0.3s;
 }
 
@@ -299,8 +268,6 @@ h1 {
   opacity: 0;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
   padding: 5px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -310,15 +277,30 @@ h1 {
   z-index: 30;
 }
 
+/* Position tooltip text for left control buttons */
+.top-left-controls .icon-text {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Position tooltip text for right control buttons */
+.top-right-controls .icon-text,
+.top-right-controls .skip-text {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /* POSITIONING CONTAINERS */
 /* Left side controls */
 .top-left-controls {
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  top: 0;
-  left: 33px;
+  gap: 6.7rem;
+  top: 4.5rem;
+  left: 73px;
   padding: 1rem;
   z-index: 20;
 }
@@ -326,80 +308,79 @@ h1 {
 /* Right side controls */
 .top-right-controls {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: -2px;
-  right: 33px;
+  top: 4.5rem;
+  right: 73px;
   padding: 1rem;
   z-index: 20;
+}
+
+/* Position each button with absolute positioning */
+.top-right-controls .skip-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#btn-yes {
+  position: absolute;
+  top: 8.4rem !important;
+  right: 1.7rem;
+}
+
+#btn-no {
+  position: absolute;
+  top: 11.2rem !important;
+  right: 1.7rem;
+}
+
+#btn-submit {
+  position: absolute;
+  top: 16rem;
+  right: 0;
 }
 
 /* Skip button placement */
 .top-right-controls .skip-btn {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
+  position: relative;
+  overflow: visible;
 }
 
 /* Submit button placement */
 #btn-submit {
-  position: absolute;
-  right: 1rem;
-  top: 110px;
+  position: relative;
   width: 60px !important;
   height: 40px !important;
-  background-color: transparent;
-  color: var(--spectre-pink);
-  border: none;
   overflow: visible;
 }
 
-/* Confirmation buttons container */
-.confirm-buttons-container {
-  position: absolute;
-  right: -70px;
-  top: 140px;
-  padding: 1rem;
-  z-index: 20;
-}
-
-.confirm-buttons {
-  margin: 0.5rem 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
- 
+/* Confirmation buttons */
 .confirm-btn {
   visibility: hidden;
+  width: 40px !important;
+  height: 40px !important;
+  overflow: visible;
+  transition: color 0.3s;
+  position: absolute;
+  right: 1rem;
 }
 
-/* HOVER EFFECTS */
-/* Icon-only hover effects */
-.icon-btn:hover .icon-wrapper i,
-.skip-btn:hover .skip-icon i,
-#btn-submit:hover .icon-wrapper i {
-  color: var(--spectre-yellow);
+/* Confirmation buttons positioning */
+#btn-yes {
+  top: 9rem;
 }
 
-/* Tooltip positioning and display */
-/* Right buttons tooltips */
-.top-right-controls .skip-text,
-.top-right-controls .icon-text {
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  margin-left: 8px;
+#btn-no {
+  top: 13rem;
 }
 
-/* Left buttons tooltips */
-.top-left-controls .icon-text {
-  top: 50%;
-  right: 100%;
-  left: auto;
-  transform: translateY(-50%);
-  margin-right: 8px;
+/* Yes button styling */
+#btn-yes .icon-wrapper i {
+  font-size: 2rem;
+}
+
+/* No button styling */
+#btn-no .icon-wrapper i {
+  font-size: 2rem;
 }
 
 /* Show tooltips on hover */
@@ -408,7 +389,7 @@ h1 {
   opacity: 1;
 }
 
-/* Tooltip arrows */
+/* Tooltip arrows for different sides */
 .top-right-controls .skip-text:before,
 .top-right-controls .icon-text:before {
   content: '';
@@ -418,7 +399,7 @@ h1 {
   transform: translateY(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: transparent var(--spectre-yellow) transparent transparent;
+  border-color: transparent #FFCB00 transparent transparent;
 }
 
 .top-left-controls .icon-text:before {
@@ -429,46 +410,20 @@ h1 {
   transform: translateY(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent transparent var(--spectre-yellow);
+  border-color: transparent transparent transparent #FFCB00;
 }
 
-/* SPECIFIC BUTTONS */
-#btn-yes, #btn-no {
-  border-color: var(--spectre-light-grey);
-}
- 
-#btn-yes:hover, #btn-no:hover {
-  border-color: var(--spectre-light-grey);
-  background-color: var(--spectre-yellow);
-  color: var(--spectre-black);
-}
-
-/* DISPLAY ELEMENTS */
+/* RESULT DISPLAY */
 #result {
   width: 100%;
   max-width: 850px;
-  margin: 0.4rem auto; /* Changed from 1.2rem to 0.4rem for consistency */
+  margin: 0.4rem auto;
   padding: 0.5rem 1.5rem;
   font-size: 1.8rem;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
-  color: var(--spectre-yellow);
-  background-color: rgba(65, 65, 65, 0.5);
   border-radius: 6px;
-  border: 2px solid var(--spectre-yellow);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
- 
-#map-name {
-  width: 100%;
-  max-width: 850px;
-  margin: 0.4rem auto; /* Changed from 0.5rem auto 0.8rem to 0.4rem for consistency */
-  padding: 0;
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
 }
 
 /* INDEX PAGE STYLING */
@@ -484,7 +439,6 @@ header {
   padding: 1.5rem 0;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 main {
@@ -502,19 +456,14 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(65, 65, 65, 0.3);
   border-radius: 12px;
   padding-top: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(75, 249, 252, 0.1);
 }
 
 .welcome-header {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  color: var(--spectre-blue);
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
@@ -529,8 +478,6 @@ main {
 }
 
 .notice {
-  background-color: rgba(247, 61, 114, 0.2);
-  border-left: 3px solid var(--spectre-pink);
   padding: 1.3rem 0.6rem 0 0.6rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -540,14 +487,12 @@ main {
 }
  
 .discord-link {
-  color: var(--spectre-blue);
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: bold;
 }
  
 .discord-link:hover {
-  color: var(--spectre-pink);
   text-decoration: underline;
 }
 
@@ -558,12 +503,13 @@ main {
   width: 100%;
 }
  
-/* Updated play image styling */
+/* PLAY BUTTON STYLING */
 .play-container {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
+
 .play-container img {
   width: 100%;
   max-width: 500px;
@@ -571,9 +517,7 @@ main {
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
-.play-container:hover img {
-  filter: brightness(0.5);
-}
+
 .play-overlay {
   position: absolute;
   top: 0;
@@ -587,43 +531,49 @@ main {
   font-size: 8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--spectre-pink);
   border-radius: 12px;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0);
   opacity: 0;
   transition: opacity 0.3s ease, background-color 0.3s ease;
-  -webkit-box-shadow:0px 0px 48px 0px rgba(247,61,114,0.9);
-  -moz-box-shadow: 0px 0px 48px 0px rgba(247,61,114,0.9);
-  box-shadow: 0px 0px 48px 0px rgba(247,61,114,0.9);
-  text-shadow: rgba(247,62,114,0.9) 0px 0px 22px;
-}
-.play-container:hover .play-overlay {
-  opacity: .8;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ORIGINAL STARTUP IMAGE STYLING (now applied through the .play-container) */
+/* STARTUP IMAGE STYLING */
 #startup-image {
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 2rem;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.1);
 }
  
 #startup-image:hover {
   transform: scale(1.02) translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(75, 249, 252, 0.3);
 }
 
+/* FOOTER */
 footer {
   padding: 1.5rem;
   text-align: center;
-  color: var(--spectre-light-grey);
   font-size: 0.9rem;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Theme Switcher */
+.theme-switcher-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.theme-switcher-container select {
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
+  background-color: transparent;
+  border: 1px solid;
+  cursor: pointer;
 }
 
 /* MEDIA QUERIES */
@@ -660,11 +610,7 @@ footer {
     width: 110px;
     height: 70px !important;
   }
-  
-  #map-name {
-    font-size: 1.7rem;
-  }
-  
+
   #result {
     font-size: 1.5rem;
     padding: 0.4rem 1rem;
@@ -702,9 +648,14 @@ footer {
     height: 720px;
   }
   
-  .confirm-buttons {
-    visibility: visible;
-    flex-direction: row;
+  .confirm-btn {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  
+  #btn-yes .icon-wrapper i,
+  #btn-no .icon-wrapper i {
+    font-size: 1.5rem;
   }
   
   .icon-btn, .skip-btn {
@@ -738,7 +689,6 @@ footer {
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    border-color: var(--spectre-yellow) transparent transparent transparent;
   }
 }
 
@@ -777,11 +727,7 @@ footer {
     height: 45px;
     font-size: 0.9rem;
   }
-  
-  #map-name {
-    font-size: 1.5rem;
-  }
-  
+
   #result {
     font-size: 1.3rem;
     padding: 0.3rem 0.8rem;
@@ -802,6 +748,11 @@ footer {
   .top-left-controls,
   .top-right-controls {
     flex-wrap: wrap;
+  }
+  
+  .skip-controls-group {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -850,15 +801,16 @@ footer {
     font-size: 0.8rem;
   }
   
-  .confirm-buttons {
-    gap: 0.5rem;
+  .confirm-btn {
+    width: 30px !important;
+    height: 30px !important;
   }
   
-  #map-name {
-    font-size: 1.3rem;
-    margin-top: 0.3rem;
+  #btn-yes .icon-wrapper i,
+  #btn-no .icon-wrapper i {
+    font-size: 1.2rem;
   }
-  
+
   #result {
     font-size: 1.1rem;
     padding: 0.3rem 0.5rem;
@@ -946,10 +898,6 @@ footer {
     font-size: 0.7rem;
   }
   
-  #map-name {
-    font-size: 1.1rem;
-  }
-  
   #result {
     font-size: 1rem;
   }
@@ -971,6 +919,16 @@ footer {
   .icon-btn, .skip-btn {
     width: 40px !important;
     height: 30px !important;
+  }
+  
+  .confirm-btn {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  
+  #btn-yes .icon-wrapper i,
+  #btn-no .icon-wrapper i {
+    font-size: 1rem;
   }
   
   .icon-wrapper i, .skip-icon i {

@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-condensed">
     <!-- Add Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Base layout styles -->
     <link rel="stylesheet" href="styles/default-styles.css">
+    <!-- Theme switcher script (loads theme CSS dynamically) -->
+    <script src="js/theme-switcher.js"></script>
     <script type="text/javascript" src="data/data.json"></script>
     <script src="src/main.js" type="module"></script>
 </head>
@@ -17,9 +20,7 @@
     </h1>
 
     <div class="quiz">
-        <div id="map-name">&nbsp;</div>
-        <div id="result">Where is this image?</div>
-        
+    
         <div class="game-layout">
             <div class="center-content">
                 <div class="section-container maps-container">
@@ -32,8 +33,9 @@
                     </div>
                 </div>
                 
+                <div id="result">Where is this image?</div>
+                
                 <div class="image-with-controls">
-                    <!-- Moved clear and get buttons to top left -->
                     <div class="top-left-controls">
                         <button class="btn icon-btn" id="btn-clear">
                             <span class="icon-wrapper"><i class="fa-solid fa-trash-can"></i></span>
@@ -57,26 +59,25 @@
                         </div>
                     </div>
                     
-                    <!-- Top right controls with skip and submit buttons stacked -->
                     <div class="top-right-controls">
                         <button class="btn skip-btn" id="btn-continue">
                             <span class="skip-icon"><i class="fa-solid fa-forward"></i></span>
                             <span class="skip-text">NEXT</span>
                         </button>
                         
-                        <!-- Submit button moved below skip -->
+                        <button class="btn icon-btn confirm-btn" id="btn-yes">
+                            <span class="icon-wrapper"><i class="fa-solid fa-check"></i></span>
+                            <span class="icon-text">YES</span>
+                        </button>
+                        <button class="btn icon-btn confirm-btn" id="btn-no">
+                            <span class="icon-wrapper"><i class="fa-solid fa-xmark"></i></span>
+                            <span class="icon-text">NO</span>
+                        </button>
+                        
                         <button class="btn icon-btn" id="btn-submit">
                             <span class="icon-wrapper"><i class="fa-solid fa-circle-check"></i></span>
                             <span class="icon-text">SUBMIT</span>
                         </button>
-                    </div>
-                    
-                    <!-- Confirmation buttons moved to their own container -->
-                    <div class="confirm-buttons-container">
-                        <div class="confirm-buttons">
-                            <button class="btn confirm-btn" id="btn-yes">Yes</button>
-                            <button class="btn confirm-btn" id="btn-no">No</button> 
-                        </div>
                     </div>
                 </div>
             </div>
