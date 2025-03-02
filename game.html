@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spectre Divide</title>
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-condensed">
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Base layout styles -->
     <link rel="stylesheet" href="styles/default-styles.css">
+    <!-- Theme switcher script (loads theme CSS dynamically) -->
+    <script src="js/theme-switcher.js"></script>
     <script type="text/javascript" src="data/data.json"></script>
     <script src="src/main.js" type="module"></script>
 </head>
 <body>
     <h1>                
-        <img src="assets/misc/SDGS1Logo.png" width="1024" height="224" alt="Spectre Divide Geoguessr" id="logo-image">
+        <img src="assets/Logos/SDGS0Logo.png" width="1024" height="224" alt="Spectre Divide Geoguessr" id="logo-image">
     </h1>
 
     <div class="quiz">
-        <div id="result">Where is this image?</div>
-        
+    
         <div class="game-layout">
             <div class="center-content">
                 <div class="section-container maps-container">
@@ -29,31 +33,51 @@
                     </div>
                 </div>
                 
-                <div class="section-container">
-                    <div class="quiz-image">
-                        <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
-                        <img width="720" height="720" class="image" id="clickable-image"> 
-                        <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
-                    </div>
-                </div>
+                <div id="result">Where is this image?</div>
                 
-                <div id="map-name">&nbsp;</div>
-                
-                <div class="controls-container">
-                    <div class="controls-row primary-controls">
-                        <button class="btn utility-btn" id="btn-map">Get Map</button>
-                        <button class="btn utility-btn" id="btn-submit">Submit</button>
+                <div class="image-with-controls">
+                    <div class="top-left-controls">
+                        <button class="btn icon-btn" id="btn-clear">
+                            <span class="icon-wrapper"><i class="fa-solid fa-trash-can"></i></span>
+                            <span class="icon-text">CLEAR</span>
+                        </button>
+                        <button class="btn icon-btn" id="btn-map">
+                            <span class="icon-wrapper"><i class="fa-solid fa-map"></i></span>
+                            <span class="icon-text">GET MAP</span>
+                        </button>
+                        <button class="btn icon-btn" id="btn-answer">
+                            <span class="icon-wrapper"><i class="fa-solid fa-location-dot"></i></span>
+                            <span class="icon-text">GET ANSWER</span>
+                        </button>
                     </div>
                     
-                    <div class="controls-row secondary-controls">
-                        <button class="btn utility-btn" id="btn-answer">Get Answer</button>
-                        <button class="btn utility-btn" id="btn-clear">Clear Map</button>
-                        <button class="btn utility-btn" id="btn-continue">Continue</button>
+                    <div class="section-container image-container">
+                        <div class="quiz-image">
+                            <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
+                            <img width="720" height="720" class="image" id="clickable-image"> 
+                            <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
+                        </div>
                     </div>
                     
-                    <div class="confirm-buttons">
-                        <button class="btn confirm-btn" id="btn-yes">Yes</button>
-                        <button class="btn confirm-btn" id="btn-no">No</button> 
+                    <div class="top-right-controls">
+                        <button class="btn skip-btn" id="btn-continue">
+                            <span class="skip-icon"><i class="fa-solid fa-forward"></i></span>
+                            <span class="skip-text">NEXT</span>
+                        </button>
+                        
+                        <button class="btn icon-btn confirm-btn" id="btn-yes">
+                            <span class="icon-wrapper"><i class="fa-solid fa-check"></i></span>
+                            <span class="icon-text">YES</span>
+                        </button>
+                        <button class="btn icon-btn confirm-btn" id="btn-no">
+                            <span class="icon-wrapper"><i class="fa-solid fa-xmark"></i></span>
+                            <span class="icon-text">NO</span>
+                        </button>
+                        
+                        <button class="btn icon-btn" id="btn-submit">
+                            <span class="icon-wrapper"><i class="fa-solid fa-circle-check"></i></span>
+                            <span class="icon-text">SUBMIT</span>
+                        </button>
                     </div>
                 </div>
             </div>
