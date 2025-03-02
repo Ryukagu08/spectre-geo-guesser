@@ -1,6 +1,4 @@
-/* S0_style.css - Spectre Divide default yellow theme */
-
-/* Color Variables */
+/* S0_style.css - Spectre Divide yellow theme */
 :root {
   --spectre-yellow: #FFCB00;
   --spectre-pink: #F73D72;
@@ -13,20 +11,17 @@
   --spectre-red: #FF3A44;
 }
 
-/* Base Body Styles */
 body {
   background-color: var(--spectre-black);
   color: var(--spectre-white);
 }
 
-/* Section Containers */
 .section-container {
   background-color: rgba(65, 65, 65, 0.5);
   border: 2px solid var(--spectre-yellow);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Quiz Image */
 .quiz-image {
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -35,7 +30,6 @@ body {
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
 
-/* Map Buttons */
 .map-btn {
   border: 2px solid var(--spectre-light-grey) !important; 
   color: var(--spectre-white);
@@ -47,16 +41,12 @@ body {
   box-shadow: 0 0 10px rgba(247, 61, 114, 0.5);
   animation: glow-pink 1.5s infinite alternate;
   position: relative;
-  z-index: 10; /* Ensure the glowing map displays above others */
+  z-index: 10;
 }
 
 @keyframes glow-pink {
-  from {
-    box-shadow: 0 0 5px var(--spectre-pink);
-  }
-  to {
-    box-shadow: 0 0 15px var(--spectre-pink), 0 0 25px var(--spectre-pink);
-  }
+  from { box-shadow: 0 0 5px var(--spectre-pink); }
+  to { box-shadow: 0 0 15px var(--spectre-pink), 0 0 25px var(--spectre-pink); }
 }
 
 .map-btn:hover {
@@ -64,7 +54,6 @@ body {
   opacity: 0.6;
 }
 
-/* Button Styles */
 .btn {
   color: var(--spectre-white);
   background-color: var(--spectre-grey);
@@ -81,14 +70,12 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Icon Buttons */
 .icon-btn, .skip-btn {
   background-color: transparent;
   border: none;
   color: var(--spectre-pink);
 }
 
-/* Confirmation Buttons */
 #btn-yes .icon-wrapper i {
   color: var(--spectre-green);
 }
@@ -111,14 +98,12 @@ body {
   border: none;
 }
 
-/* Hover Effects */
 .icon-btn:hover .icon-wrapper i,
 .skip-btn:hover .skip-icon i,
 #btn-submit:hover .icon-wrapper i {
   color: var(--spectre-yellow);
 }
 
-/* Tooltips */
 .icon-text, .skip-text {
   background-color: var(--spectre-yellow);
   color: var(--spectre-black);
@@ -133,7 +118,6 @@ body {
   border-color: transparent transparent transparent var(--spectre-yellow);
 }
 
-/* Result Display */
 #result {
   color: var(--spectre-yellow);
   background-color: rgba(65, 65, 65, 0.5);
@@ -141,7 +125,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Result message colors */
 .result-correct {
   color: var(--spectre-green) !important;
   font-weight: bold;
@@ -152,7 +135,6 @@ body {
   font-weight: bold;
 }
 
-/* Welcome Screen */
 header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -182,7 +164,6 @@ header {
   text-decoration: underline;
 }
 
-/* Play Button */
 .play-container:hover img {
   filter: brightness(0.5);
 }
@@ -190,8 +171,6 @@ header {
 .play-overlay {
   color: var(--spectre-pink);
   background-color: rgba(0, 0, 0, 0);
-  -webkit-box-shadow: 0px 0px 48px 0px rgba(247,61,114,0.9);
-  -moz-box-shadow: 0px 0px 48px 0px rgba(247,61,114,0.9);
   box-shadow: 0px 0px 48px 0px rgba(247,61,114,0.9);
   text-shadow: rgba(247,62,114,0.9) 0px 0px 22px;
 }
@@ -201,7 +180,6 @@ header {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Startup Image */
 #startup-image {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -211,13 +189,11 @@ header {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(75, 249, 252, 0.3);
 }
 
-/* Footer */
 footer {
   color: var(--spectre-light-grey);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Theme Switcher Styling */
 .theme-switcher-container {
   border-color: var(--spectre-yellow) !important;
 }
@@ -230,7 +206,21 @@ footer {
   background-color: var(--spectre-black);
 }
 
-/* Responsive Color Adjustments */
+/* Scrollbar */
+* {
+  scrollbar-color: var(--spectre-grey) rgba(0, 0, 0, 0.2);  /* For Firefox */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--spectre-grey);
+  border: 1px solid var(--spectre-yellow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--spectre-yellow);
+  border: 1px solid var(--spectre-grey);
+}
+
 @media screen and (max-width: 900px) {
   .top-left-controls .icon-text:before,
   .top-right-controls .icon-text:before,

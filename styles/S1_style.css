@@ -1,251 +1,239 @@
 /* S1_style.css - Spectre Divide Flashpoint theme */
-
-/* Color Variables */
 :root {
-    --spectre-yellow: #FFCB00;
-    --spectre-pink: #F73D72;
-    --spectre-green: #24EDAE;
-    --spectre-blue: #4BF9FC;
-    --spectre-black: #000000;
-    --spectre-white: #F2F2F2;
-    --spectre-grey: #414141;
-    --spectre-light-grey: #D4D4CC;
-    --spectre-red: #FF3A44;
-    
-    /* Flashpoint color - main theme color */
-    --flashpoint-green: #C6EA34;
-    
-    /* Theme-specific colors */
-    --theme-primary: var(--flashpoint-green);
-    --theme-secondary: var(--spectre-pink);
-    --theme-accent: var(--spectre-yellow);
-    --theme-background: var(--spectre-black);
-    --theme-text: var(--spectre-white);
-}
+  --spectre-yellow: #FFCB00;
+  --spectre-pink: #F73D72;
+  --spectre-green: #24EDAE;
+  --spectre-blue: #4BF9FC;
+  --spectre-black: #000000;
+  --spectre-white: #F2F2F2;
+  --spectre-grey: #414141;
+  --spectre-light-grey: #D4D4CC;
+  --spectre-red: #FF3A44;
   
-/* Base Body Styles */
+  --flashpoint-green: #C6EA34;
+  
+  --theme-primary: var(--flashpoint-green);
+  --theme-secondary: var(--spectre-pink);
+  --theme-accent: var(--spectre-yellow);
+  --theme-background: var(--spectre-black);
+  --theme-text: var(--spectre-white);
+}
+
 body {
-  background-color: var(--theme-background);
-  color: var(--theme-text);
+background-color: var(--theme-background);
+color: var(--theme-text);
 }
-  
-/* Section Containers */
+
 .section-container {
-  background-color: rgba(65, 65, 65, 0.5);
-  border: 2px solid var(--theme-primary);
-  box-shadow: 0 4px 15px rgba(198, 234, 52, 0.2);
+background-color: rgba(65, 65, 65, 0.5);
+border: 2px solid var(--theme-primary);
+box-shadow: 0 4px 15px rgba(198, 234, 52, 0.2);
 }
-  
-/* Quiz Image */
+
 .quiz-image {
-  background-color: rgba(0, 0, 0, 0.3);
+background-color: rgba(0, 0, 0, 0.3);
 }
-  
+
 #dot {
-  filter: drop-shadow(0 0 3px rgba(198, 234, 52, 0.9));
+filter: drop-shadow(0 0 3px rgba(198, 234, 52, 0.9));
 }
 
-/* Button Styles - Pink by default and green on hover */
 .btn {
-  color: var(--theme-text);
-  background-color: var(--spectre-grey);
-  border: 1px solid var(--theme-secondary);
-}
-  
-.btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
-  background-color: var(--theme-primary);
-  color: var(--spectre-black);
-  box-shadow: 0 3px 5px rgba(198, 234, 52, 0.4);
-  border-color: var(--theme-primary);
-}
-  
-.btn:active:not(.icon-btn):not(.skip-btn) {
-  box-shadow: 0 1px 2px rgba(198, 234, 52, 0.5);
+color: var(--theme-text);
+background-color: var(--spectre-grey);
+border: 1px solid var(--theme-secondary);
 }
 
-/* Map Buttons - Must be AFTER the .btn rule to override it */
-.map-btn {
-  border: 2px solid var(--spectre-light-grey) !important;
-  color: var(--theme-text);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+.btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
+background-color: var(--theme-primary);
+color: var(--spectre-black);
+box-shadow: 0 3px 5px rgba(198, 234, 52, 0.4);
+border-color: var(--theme-primary);
 }
-  
+
+.btn:active:not(.icon-btn):not(.skip-btn) {
+box-shadow: 0 1px 2px rgba(198, 234, 52, 0.5);
+}
+
+.map-btn {
+border: 2px solid var(--spectre-light-grey) !important;
+color: var(--theme-text);
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
 .map-btn.correct-map {
-  border: 3px solid var(--theme-secondary) !important;
-  box-shadow: 0 0 10px var(--theme-secondary);
-  animation: glow-pink 1.5s infinite alternate;
-  position: relative;
-  z-index: 10;
+border: 3px solid var(--theme-secondary) !important;
+box-shadow: 0 0 10px var(--theme-secondary);
+animation: glow-pink 1.5s infinite alternate;
+position: relative;
+z-index: 10;
 }
 
 @keyframes glow-pink {
-  from {
-    box-shadow: 0 0 5px var(--theme-secondary);
-  }
-  to {
-    box-shadow: 0 0 15px var(--theme-secondary), 0 0 25px var(--theme-secondary);
-  }
+from { box-shadow: 0 0 5px var(--theme-secondary); }
+to { box-shadow: 0 0 15px var(--theme-secondary), 0 0 25px var(--theme-secondary); }
 }
-  
+
 .map-btn:hover {
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  opacity: 0.6;
+box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+opacity: 0.6;
 }
-  
-/* Icon Buttons */
+
 .icon-btn, .skip-btn {
-  background-color: transparent;
-  border: none;
-  color: var(--theme-secondary);
+background-color: transparent;
+border: none;
+color: var(--theme-secondary);
 }
-  
-/* Confirmation Buttons */
+
 #btn-yes .icon-wrapper i {
-  color: var(--theme-primary);
+color: var(--theme-primary);
 }
-  
+
 #btn-yes:hover .icon-wrapper i {
-  color: var(--theme-accent);
+color: var(--theme-accent);
 }
-  
+
 #btn-no .icon-wrapper i {
-  color: var(--theme-secondary);
+color: var(--theme-secondary);
 }
-  
+
 #btn-no:hover .icon-wrapper i {
-  color: var(--theme-accent);
+color: var(--theme-accent);
 }
-  
+
 #btn-submit {
-  background-color: transparent;
-  color: var(--theme-secondary);
-  border: none;
+background-color: transparent;
+color: var(--theme-secondary);
+border: none;
 }
-  
-/* Hover Effects */
+
 .icon-btn:hover .icon-wrapper i,
 .skip-btn:hover .skip-icon i,
 #btn-submit:hover .icon-wrapper i {
-  color: var(--theme-primary);
-}
-  
-/* Tooltips */
-.icon-text, .skip-text {
-  background-color: var(--theme-primary);
-  color: var(--spectre-black);
-}
-  
-.top-right-controls .skip-text:before,
-.top-right-controls .icon-text:before {
-  border-color: transparent var(--theme-primary) transparent transparent;
-}
-  
-.top-left-controls .icon-text:before {
-  border-color: transparent transparent transparent var(--theme-primary);
-}
-  
-/* Result Display */
-#result {
-  color: var(--theme-primary);
-  background-color: rgba(65, 65, 65, 0.5);
-  border: 2px solid var(--theme-primary);
-  box-shadow: 0 4px 12px rgba(198, 234, 52, 0.2);
+color: var(--theme-primary);
 }
 
-/* Result message colors */
+.icon-text, .skip-text {
+background-color: var(--theme-primary);
+color: var(--spectre-black);
+}
+
+.top-right-controls .skip-text:before,
+.top-right-controls .icon-text:before {
+border-color: transparent var(--theme-primary) transparent transparent;
+}
+
+.top-left-controls .icon-text:before {
+border-color: transparent transparent transparent var(--theme-primary);
+}
+
+#result {
+color: var(--theme-primary);
+background-color: rgba(65, 65, 65, 0.5);
+border: 2px solid var(--theme-primary);
+box-shadow: 0 4px 12px rgba(198, 234, 52, 0.2);
+}
+
 .result-correct {
-  color: var(--spectre-green) !important;
-  font-weight: bold;
+color: var(--spectre-green) !important;
+font-weight: bold;
 }
 
 .result-incorrect {
-  color: var(--spectre-red) !important;
-  font-weight: bold;
-}
-  
-/* Welcome Screen */
-header {
-  border-bottom: 1px solid rgba(198, 234, 52, 0.2);
-}
-  
-.welcome-container {
-  background-color: rgba(65, 65, 65, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(198, 234, 52, 0.3);
-}
-  
-.welcome-header {
-  color: var(--theme-primary);
-}
-  
-.notice {
-  background-color: rgba(247, 61, 114, 0.2);
-  border-left: 3px solid var(--theme-secondary);
-}
-  
-.discord-link {
-  color: var(--theme-primary);
-}
-  
-.discord-link:hover {
-  color: var(--theme-secondary);
-  text-decoration: underline;
-}
-  
-/* Play Button */
-.play-container:hover img {
-  filter: brightness(0.6) saturate(1.2);
-}
-  
-.play-overlay {
-  color: var(--theme-primary);
-  background-color: rgba(0, 0, 0, 0);
-  -webkit-box-shadow: 0px 0px 48px 0px rgba(198, 234, 52, 0.7);
-  -moz-box-shadow: 0px 0px 48px 0px rgba(198, 234, 52, 0.7);
-  box-shadow: 0px 0px 48px 0px rgba(198, 234, 52, 0.7);
-  text-shadow: rgba(198, 234, 52, 0.9) 0px 0px 22px;
-}
-  
-.play-container:hover .play-overlay {
-  opacity: 0.9;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-  
-/* Startup Image */
-#startup-image {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(198, 234, 52, 0.2);
-}
-  
-#startup-image:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(198, 234, 52, 0.5);
-}
-  
-/* Footer */
-footer {
-  color: var(--spectre-light-grey);
-  border-top: 1px solid rgba(198, 234, 52, 0.2);
+color: var(--spectre-red) !important;
+font-weight: bold;
 }
 
-/* Theme Switcher Styling */
+header {
+border-bottom: 1px solid rgba(198, 234, 52, 0.2);
+}
+
+.welcome-container {
+background-color: rgba(65, 65, 65, 0.3);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+backdrop-filter: blur(5px);
+border: 1px solid rgba(198, 234, 52, 0.3);
+}
+
+.welcome-header {
+color: var(--theme-primary);
+}
+
+.notice {
+background-color: rgba(247, 61, 114, 0.2);
+border-left: 3px solid var(--theme-secondary);
+}
+
+.discord-link {
+color: var(--theme-primary);
+}
+
+.discord-link:hover {
+color: var(--theme-secondary);
+text-decoration: underline;
+}
+
+.play-container:hover img {
+filter: brightness(0.6) saturate(1.2);
+}
+
+.play-overlay {
+color: var(--theme-primary);
+background-color: rgba(0, 0, 0, 0);
+box-shadow: 0px 0px 48px 0px rgba(198, 234, 52, 0.7);
+text-shadow: rgba(198, 234, 52, 0.9) 0px 0px 22px;
+}
+
+.play-container:hover .play-overlay {
+opacity: 0.9;
+background-color: rgba(0, 0, 0, 0.4);
+}
+
+#startup-image {
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+border: 2px solid rgba(198, 234, 52, 0.2);
+}
+
+#startup-image:hover {
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(198, 234, 52, 0.5);
+}
+
+footer {
+color: var(--spectre-light-grey);
+border-top: 1px solid rgba(198, 234, 52, 0.2);
+}
+
 .theme-switcher-container {
-  border-color: var(--theme-primary) !important;
+border-color: var(--theme-primary) !important;
 }
-  
+
 #theme-switcher {
-  border-color: var(--theme-primary) !important;
+border-color: var(--theme-primary) !important;
 }
-  
+
 #theme-switcher option {
-  background-color: var(--spectre-black);
+background-color: var(--spectre-black);
 }
-  
-/* Responsive Color Adjustments */
+
+/* Scrollbar */
+* {
+  scrollbar-color: var(--spectre-grey) rgba(0, 0, 0, 0.2);  /* For Firefox */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--spectre-grey);
+  border: 1px solid var(--theme-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-primary);
+  border: 1px solid var(--spectre-grey);
+}
+
 @media screen and (max-width: 900px) {
-  .top-left-controls .icon-text:before,
-  .top-right-controls .icon-text:before,
-  .top-right-controls .skip-text:before {
-    border-color: var(--theme-primary) transparent transparent transparent;
-  }
+.top-left-controls .icon-text:before,
+.top-right-controls .icon-text:before,
+.top-right-controls .skip-text:before {
+  border-color: var(--theme-primary) transparent transparent transparent;
+}
 }

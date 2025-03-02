@@ -1,4 +1,4 @@
-/* Basic styles and resets */
+/* Reset and Base Styles */
 .quiz {
   margin: 0;
   padding: 0;
@@ -17,7 +17,6 @@
   padding: 0;
 }
  
-/* Base styles */
 body {
   font-family: 'DIN', 'Arial Narrow', Arial, sans-serif;
   font-size: 2rem;
@@ -42,7 +41,7 @@ h1 {
   transform: scale(1.02);
 }
 
-/* LAYOUT STRUCTURE */
+/* Layout Structure */
 .game-layout {
   position: relative;
   display: flex;
@@ -70,7 +69,7 @@ h1 {
   align-items: flex-start;
 }
 
-/* SECTION CONTAINERS */
+/* Containers */
 .section-container {
   border-radius: 8px;
   padding: 1rem;
@@ -100,7 +99,7 @@ h1 {
   margin: 0 auto;
 }
 
-/* QUIZ IMAGE */
+/* Quiz Image */
 .quiz-image {
   position: relative;
   display: flex;
@@ -147,7 +146,7 @@ h1 {
   object-fit: contain;
 }
 
-/* MAP SELECTION BUTTONS */
+/* Map Selection */
 .maps {
   display: flex;
   flex-direction: row;
@@ -202,7 +201,7 @@ h1 {
   background-image: url('../assets/thumbnails/Canal.png');
 }
 
-/* CONTROL BUTTONS - GENERAL */
+/* Buttons */
 .btn {
   width: 150px;
   height: 50px;
@@ -218,7 +217,6 @@ h1 {
   justify-content: center;
 }
 
-/* Regular button hover effects */
 .btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
   transform: translateY(-2px);
 }
@@ -227,7 +225,7 @@ h1 {
   transform: translateY(0);
 }
 
-/* ICON BUTTONS */
+/* Icon Buttons */
 .icon-btn {
   width: 60px !important;
   height: 40px !important;
@@ -237,7 +235,6 @@ h1 {
   position: relative;
 }
 
-/* SKIP BUTTON */
 .skip-btn {
   width: 60px !important;
   height: 40px !important;
@@ -247,7 +244,6 @@ h1 {
   position: relative;
 }
 
-/* BUTTON ICON STYLES */
 .icon-wrapper, .skip-icon {
   display: flex;
   justify-content: center;
@@ -262,7 +258,7 @@ h1 {
   transition: color 0.3s;
 }
 
-/* TOOLTIP TEXT STYLES */
+/* Tooltips */
 .icon-text, .skip-text {
   position: absolute;
   opacity: 0;
@@ -277,14 +273,12 @@ h1 {
   z-index: 30;
 }
 
-/* Position tooltip text for left control buttons */
 .top-left-controls .icon-text {
   right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* Position tooltip text for right control buttons */
 .top-right-controls .icon-text,
 .top-right-controls .skip-text {
   left: calc(100% + 10px);
@@ -292,8 +286,7 @@ h1 {
   transform: translateY(-50%);
 }
 
-/* POSITIONING CONTAINERS */
-/* Left side controls */
+/* Control Positioning */
 .top-left-controls {
   position: absolute;
   display: flex;
@@ -305,7 +298,6 @@ h1 {
   z-index: 20;
 }
 
-/* Right side controls */
 .top-right-controls {
   position: absolute;
   top: 4.5rem;
@@ -314,7 +306,6 @@ h1 {
   z-index: 20;
 }
 
-/* Position each button with absolute positioning */
 .top-right-controls .skip-btn {
   position: absolute;
   top: 0;
@@ -339,13 +330,11 @@ h1 {
   right: 0;
 }
 
-/* Skip button placement */
 .top-right-controls .skip-btn {
   position: relative;
   overflow: visible;
 }
 
-/* Submit button placement */
 #btn-submit {
   position: relative;
   width: 60px !important;
@@ -364,7 +353,6 @@ h1 {
   right: 1rem;
 }
 
-/* Confirmation buttons positioning */
 #btn-yes {
   top: 9rem;
 }
@@ -373,23 +361,20 @@ h1 {
   top: 13rem;
 }
 
-/* Yes button styling */
 #btn-yes .icon-wrapper i {
   font-size: 2rem;
 }
 
-/* No button styling */
 #btn-no .icon-wrapper i {
   font-size: 2rem;
 }
 
-/* Show tooltips on hover */
 .icon-btn:hover .icon-text,
 .skip-btn:hover .skip-text {
   opacity: 1;
 }
 
-/* Tooltip arrows for different sides */
+/* Tooltip arrows */
 .top-right-controls .skip-text:before,
 .top-right-controls .icon-text:before {
   content: '';
@@ -413,7 +398,7 @@ h1 {
   border-color: transparent transparent transparent #FFCB00;
 }
 
-/* RESULT DISPLAY */
+/* Results */
 #result {
   width: 100%;
   max-width: 850px;
@@ -426,7 +411,7 @@ h1 {
   border-radius: 6px;
 }
 
-/* INDEX PAGE STYLING */
+/* Index Page */
 .index-body {
   line-height: 1.6;
   display: flex;
@@ -503,7 +488,7 @@ main {
   width: 100%;
 }
  
-/* PLAY BUTTON STYLING */
+/* Play Button */
 .play-container {
   position: relative;
   display: inline-block;
@@ -537,7 +522,6 @@ main {
   transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
-/* STARTUP IMAGE STYLING */
 #startup-image {
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -548,7 +532,7 @@ main {
   transform: scale(1.02) translateY(-5px);
 }
 
-/* FOOTER */
+/* Footer */
 footer {
   padding: 1.5rem;
   text-align: center;
@@ -576,8 +560,33 @@ footer {
   cursor: pointer;
 }
 
-/* MEDIA QUERIES */
-/* General responsive adjustments */
+/* Standard scrollbar styling */
+* {
+  scrollbar-width: thin;  /* For Firefox */
+  scrollbar-color: rgba(65, 65, 65, 0.5) rgba(0, 0, 0, 0.2);  /* For Firefox */
+}
+
+/* Webkit (Chrome, Safari, Edge) scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(65, 65, 65, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(65, 65, 65, 0.8);
+}
+
+/* Media Queries */
 @media screen and (max-width: 1200px) {
   #logo-image {
     width: 50%;
@@ -592,7 +601,6 @@ footer {
   }
 }
 
-/* Tablet and smaller screens */
 @media screen and (max-width: 900px) {
   body {
     font-size: 1.6rem;
@@ -616,7 +624,6 @@ footer {
     padding: 0.4rem 1rem;
   }
   
-  /* Index page */
   .welcome-container {
     max-width: 90%;
   }
@@ -625,7 +632,6 @@ footer {
     max-width: 450px;
   }
   
-  /* Responsive adjustment for controls */
   .top-left-controls,
   .top-right-controls,
   .confirm-buttons-container {
@@ -671,7 +677,6 @@ footer {
     font-size: 0.8rem;
   }
   
-  /* Adjust tooltip positions for mobile */
   .top-left-controls .icon-text,
   .top-right-controls .icon-text,
   .top-right-controls .skip-text {
@@ -692,7 +697,6 @@ footer {
   }
 }
 
-/* Large phones and small tablets */
 @media screen and (max-width: 768px) {
   body {
     font-size: 1.4rem;
@@ -734,7 +738,6 @@ footer {
     margin: 1rem auto;
   }
 
-  /* Index page */
   .welcome-header {
     font-size: 1.8rem;
   }
@@ -744,7 +747,6 @@ footer {
     font-size: 1.2rem;
   }
   
-  /* Smaller screens */
   .top-left-controls,
   .top-right-controls {
     flex-wrap: wrap;
@@ -756,7 +758,6 @@ footer {
   }
 }
 
-/* Mobile phones */
 @media screen and (max-width: 650px) {
   body {
     font-size: 1.2rem;
@@ -817,7 +818,6 @@ footer {
     margin: 0.8rem auto;
   }
   
-  /* Index page */
   main {
     padding: 1rem;
   }
@@ -855,7 +855,6 @@ footer {
     font-size: 0.8rem;
   }
   
-  /* Additional mobile adjustments */
   .icon-btn, .skip-btn {
     width: 45px !important;
     height: 35px !important;
@@ -871,7 +870,6 @@ footer {
   }
 }
 
-/* Extra small devices */
 @media screen and (max-width: 320px) {
   body {
     font-size: 1rem;
@@ -902,7 +900,6 @@ footer {
     font-size: 1rem;
   }
   
-  /* Index page */
   .welcome-header {
     font-size: 1.3rem;
   }
@@ -936,7 +933,6 @@ footer {
   }
 }
 
-/* Fix for orientation changes */
 @media screen and (max-height: 600px) and (orientation: landscape) {
   #logo-image {
     width: 30%;
@@ -953,7 +949,6 @@ footer {
     height: 300px;
   }
   
-  /* Move map selection to the side for landscape on small screens */
   .game-layout {
     flex-direction: row;
     align-items: flex-start;
@@ -973,7 +968,6 @@ footer {
     width: 70%;
   }
   
-  /* Index page in landscape */
   .content-container {
     flex-direction: row;
     justify-content: space-around;
@@ -993,7 +987,6 @@ footer {
   }
 }
 
-/* Fix for touch devices */
 @media (hover: none) {
   .btn:hover:not(.skip-btn):not(.icon-btn), .map-btn:hover, .play-btn:hover {
     transform: none;
@@ -1006,14 +999,12 @@ footer {
   }
 }
 
-/* Override for small screens */
 @media screen and (max-width: 963px) {
   .game-layout {
     flex-direction: column;
   }
 }
 
-/* Scrollable container for small screens */
 @media screen and (max-width: 720px) {
   .image-with-controls {
     overflow-x: auto;
