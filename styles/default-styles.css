@@ -123,8 +123,13 @@ h1 {
 #dot {
   visibility: hidden;
   position: absolute; 
-  left: 200px;
-  top: 200px;
+  /* Calculate the scale factor */
+  --original-width: 720px;
+  --current-width: 520px;
+  --scale-factor: calc(var(--current-width) / var(--original-width));
+
+  left: calc(var(--dot-x, 200) * var(--scale-factor) * 1px);
+  top: calc(var(--dot-y, 200) * var(--scale-factor) * 1px);
   z-index: 10;
   transform: translate(-50%, -50%);
 }

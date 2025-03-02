@@ -46,23 +46,32 @@ window.onload = () => {
     .catch(error => console.error("Error loading JSON:", error));
 };
 
-
 //event listeners 
 
 // place dot on click
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#clickable-image").addEventListener("click", function(event) {
+        // Scale coordinates back to original image size
+        const scaleX = 720 / event.target.clientWidth;
+        const scaleY = 720 / event.target.clientHeight;
+        
         let inputedCords = getCoordinates(event);
-        cords.x = inputedCords.x;
-        cords.y = inputedCords.y;
+        
+        cords.x = Math.round(inputedCords.x * scaleX);
+        cords.y = Math.round(inputedCords.y * scaleY);
         
         if (!element_dot) {
             console.error("Element not found!");
             return;
         }
 
-        element_dot.style.left = cords.x + "px";
-        element_dot.style.top = cords.y + "px";
+        // Set CSS variables for precise positioning
+        element_dot.style.setProperty('--dot-x', cords.x);
+        element_dot.style.setProperty('--dot-y', cords.y);
+
+        element_dot.style.left = `calc(${cords.x} * ((520 / 720) * 1px))`;
+        element_dot.style.top = `calc(${cords.y} * ((520 / 720) * 1px))`;
+        element_dot.style.visibility = 'visible';
     });
 });
 
@@ -125,9 +134,16 @@ document.querySelector("#btn-map").addEventListener("click", function()
 
 // Get answer button - show the correct spot
 document.querySelector("#btn-answer").addEventListener("click", function() {
-
-    element_dot.style.left = currentImageData.imageData.cords.x + "px";
-    element_dot.style.top = currentImageData.imageData.cords.y + "px";
+    const dotElement = element_dot;
+    
+    // Set CSS variables for dot positioning
+    dotElement.style.setProperty('--dot-x', currentImageData.imageData.cords.x);
+    dotElement.style.setProperty('--dot-y', currentImageData.imageData.cords.y);
+    
+    dotElement.style.left = `calc(${currentImageData.imageData.cords.x} * ((520 / 720) * 1px))`;
+    dotElement.style.top = `calc(${currentImageData.imageData.cords.y} * ((520 / 720) * 1px))`;
+    
+    dotElement.style.visibility = 'visible';
 
     knowsAnswer = true;
 });
@@ -219,7 +235,6 @@ document.querySelector("#btn-no").addEventListener("click", function() {
     element_result.className = ""; // Reset result class
 });
 
-
 // Helper functions
 
 // Create and randomize the array of images
@@ -298,5 +313,4 @@ const submitted = (x,y,currentImageData) => {
         element_result.innerHTML = 'Wrong map';
         element_result.className = 'result-incorrect'; // Add red text class
     }
-    
 }
