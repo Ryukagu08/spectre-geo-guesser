@@ -22,10 +22,31 @@
 body {
 background-color: var(--theme-background);
 color: var(--theme-text);
+position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/S1_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Prevent background image on index page */
+.index-body::before {
+  background-image: none;
 }
 
 .section-container {
-background-color: rgba(65, 65, 65, 0.5);
+background-color: rgba(65, 65, 65, 0.8);
 border: 2px solid var(--theme-primary);
 box-shadow: 0 4px 15px rgba(198, 234, 52, 0.2);
 }
@@ -129,7 +150,7 @@ border-color: transparent transparent transparent var(--theme-primary);
 
 #result {
 color: var(--theme-primary);
-background-color: rgba(65, 65, 65, 0.5);
+background-color: rgba(65, 65, 65, 0.8);
 border: 2px solid var(--theme-primary);
 box-shadow: 0 4px 12px rgba(198, 234, 52, 0.2);
 }
