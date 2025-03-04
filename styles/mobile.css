@@ -1,0 +1,611 @@
+/* mobile.css - Responsive styles for Spectre Divide Geoguessr */
+
+/* ==========================================================================
+   Responsive Breakpoints:
+   - 1200px: Large desktops and below
+   - 992px: Small desktops and laptops
+   - 768px: Tablets
+   - 576px: Large phones
+   - 480px: Small phones
+   ========================================================================== */
+
+/* ==========================================================================
+   Large Desktop and below (1200px)
+   ========================================================================== */
+   @media screen and (max-width: 1200px) {
+    /* Reduce logo size */
+    #logo-image {
+      width: 35%;
+    }
+    
+    /* Make main container more compact */
+    .game-layout {
+      max-width: 1000px;
+    }
+    
+    /* Adjust control positioning */
+    .top-left-controls {
+      left: 40px;
+    }
+    
+    .top-right-controls {
+      right: 40px;
+    }
+  }
+  
+  /* ==========================================================================
+     Small Desktops and Laptops (992px)
+     ========================================================================== */
+  @media screen and (max-width: 992px) {
+    /* Further reduce logo size */
+    #logo-image {
+      width: 45%;
+    }
+    
+    /* Header adjustments */
+    h1 {
+      margin: 0.3rem 0;
+    }
+    
+    /* Layout adjustments */
+    .game-layout {
+      max-width: 95%;
+    }
+    
+    /* Adjust image container */
+    .image-with-controls .section-container {
+      width: 660px;
+    }
+    
+    .quiz-image {
+      width: 460px;
+      height: 460px;
+    }
+    
+    /* Reposition controls */
+    .top-left-controls {
+      left: 25px;
+      gap: 5.5rem;
+    }
+    
+    .top-right-controls {
+      right: 25px;
+    }
+    
+    /* Adjust theme switcher */
+    .theme-select-wrapper {
+      width: 140px;
+    }
+    
+    /* Adjust map buttons to be smaller but still readable */
+    .map-btn {
+      width: 110px;
+      height: 75px !important;
+    }
+    
+    .maps {
+      gap: 0.5rem;
+    }
+  }
+  
+  /* ==========================================================================
+     Tablets (768px)
+     ========================================================================== */
+  @media screen and (max-width: 768px) {
+    /* Reduce font sizes */
+    body {
+      font-size: 1.7rem;
+    }
+    
+    #result {
+      font-size: 1.5rem;
+      padding: 0.4rem 1rem;
+    }
+    
+    /* Further reduce logo size */
+    #logo-image {
+      width: 60%;
+    }
+    
+    /* Reconfigure the map selection */
+    .maps-container {
+      max-width: 600px;
+      padding: 0.7rem 0.3rem;
+    }
+    
+    .maps {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    
+    .map-btn {
+      width: 100px;
+      height: 65px !important;
+    }
+    
+    /* Completely restructure the game layout */
+    .game-layout {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Place image at the top */
+    .image-with-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin:  auto;
+      position: relative;
+    }
+    
+    /* Move all controls below the image in one row */
+    .image-with-controls:after {
+      content: "";
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    /* Adjust image container */
+    .image-with-controls .section-container {
+      order: 0; /* Place at the top */
+      width: 520px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .quiz-image {
+      width: 420px;
+      height: 420px;
+    }
+    
+    /* Create a new container for all controls */
+    .controls-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      width: 100%;
+      padding: 0.5rem;
+      order: 1; /* Place after image */
+    }
+    
+    /* Combine all controls into one row */
+    .top-left-controls,
+    .top-right-controls {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding: 0;
+      width: auto;
+      order: unset;
+    }
+    
+    /* Move all buttons to the new controls container */
+    .image-with-controls .top-left-controls,
+    .image-with-controls .top-right-controls {
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+    }
+    
+    /* Force buttons to appear in one row */
+    .icon-btn, 
+    .skip-btn,
+    #btn-clear,
+    #btn-map,
+    #btn-answer,
+    #btn-continue,
+    #btn-yes,
+    #btn-no,
+    #btn-submit {
+      position: static !important;
+      top: auto !important;
+      right: auto !important;
+      margin: 0 0.4rem;
+    }
+    
+    /* Adjust tooltips to appear above buttons */
+    .icon-text,
+    .skip-text {
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .top-right-controls .icon-text:before,
+    .top-left-controls .icon-text:before,
+    .top-right-controls .skip-text:before {
+      top: 100%;
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      border-color: var(--spectre-yellow) transparent transparent transparent;
+    }
+    
+    /* After the image loads, inject the controls wrapper */
+    .center-content::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 60px; /* Space for controls */
+    }
+    
+    /* Index page adjustments */
+    .welcome-container {
+      padding: 1rem;
+    }
+    
+    .welcome-header {
+      font-size: 2rem;
+    }
+    
+    .welcome-text {
+      font-size: 1.1rem;
+    }
+    
+    .play-container img {
+      max-width: 420px;
+    }
+    
+    .play-overlay {
+      font-size: 6rem;
+    }
+  }
+  
+  /* ==========================================================================
+     Large Phones (576px)
+     ========================================================================== */
+  @media screen and (max-width: 576px) {
+    /* Further reduce font sizes */
+    body {
+      font-size: 1.4rem;
+    }
+    
+    #result {
+      font-size: 1.3rem;
+      padding: 0.4rem 0.8rem;
+      max-width: 95%;
+    }
+    
+    /* Further reduce logo size */
+    #logo-image {
+      width: 80%;
+    }
+    
+    /* Adjust map selection */
+    .maps-container {
+      padding: 0.5rem 0.2rem;
+    }
+    
+    .maps {
+      gap: 0.4rem;
+    }
+    
+    .map-btn {
+      width: 85px;
+      height: 55px !important;
+    }
+    
+    .map-btn span {
+      font-size: 0.9rem;
+    }
+    
+    /* Control buttons */
+    .btn {
+      width: 130px;
+      height: 40px;
+      font-size: 0.9rem;
+    }
+    
+    .icon-btn,
+    .skip-btn {
+      width: 50px !important;
+      height: 35px !important;
+      margin: 0 0.2rem; /* Tighter spacing on small screens */
+    }
+    
+    .icon-wrapper i,
+    .skip-icon i {
+      font-size: 2rem;
+    }
+    
+    /* Further compress control layout */
+    .controls-container {
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    /* Create two rows of controls if needed */
+    .top-left-controls,
+    .top-right-controls {
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Adjust image container */
+    .image-with-controls .section-container {
+      width: 320px;
+      margin-bottom: 1rem; /* Less space before controls */
+    }
+    
+    .quiz-image {
+      width: 280px;
+      height: 280px;
+    }
+    
+    /* Welcome and play sections */
+    .welcome-header {
+      font-size: 1.8rem;
+    }
+    
+    .welcome-text {
+      font-size: 1rem;
+    }
+    
+    .play-container img {
+      max-width: 300px;
+    }
+    
+    .play-overlay {
+      font-size: 4rem;
+    }
+    
+    /* Adjust spacing */
+    main {
+      padding: 1rem;
+    }
+    
+    /* Theme switcher */
+    .theme-select-wrapper {
+      width: 120px;
+    }
+    
+    #theme-switcher {
+      font-size: 0.8rem;
+      padding: 0.4rem 2rem 0.4rem 0.6rem;
+    }
+  }
+  
+  /* ==========================================================================
+     Small Phones (480px)
+     ========================================================================== */
+  @media screen and (max-width: 480px) {
+    /* Minimal font sizes */
+    body {
+      font-size: 1.2rem;
+    }
+    
+    #result {
+      font-size: 1.1rem;
+      padding: 0.3rem 0.6rem;
+    }
+    
+    /* Maximize logo width */
+    #logo-image {
+      width: 90%;
+    }
+    
+    /* Reconfigure map selection to potentially scroll horizontally */
+    .maps-container {
+      overflow-x: auto;
+      padding: 0.4rem 0.1rem;
+    }
+    
+    .maps {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      width: max-content;
+      min-width: 100%;
+      margin: 0;
+      gap: 0.3rem;
+      padding: 0 0.5rem;
+    }
+    
+    .map-btn {
+      width: 75px;
+      height: 50px !important;
+      flex-shrink: 0;
+    }
+    
+    .map-btn span {
+      font-size: 0.8rem;
+    }
+    
+    /* Controls layout for smallest screens */
+    .controls-container {
+      gap: 0.3rem;
+      padding: 0.3rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Split controls into multiple rows */
+    .top-left-controls,
+    .top-right-controls {
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 0.3rem;
+    }
+    
+    /* Button styling */
+    .btn {
+      width: 120px;
+      height: 35px;
+      font-size: 0.8rem;
+    }
+    
+    .icon-btn,
+    .skip-btn {
+      width: 40px !important;
+      height: 35px !important; /* Slightly larger touch target */
+      margin: 0 0.15rem;
+    }
+    
+    .icon-wrapper i,
+    .skip-icon i {
+      font-size: 1.7rem;
+    }
+    
+    /* Group similar buttons together */
+    .top-left-controls .icon-btn,
+    .top-right-controls .icon-btn,
+    .top-right-controls .skip-btn {
+      display: inline-flex;
+    }
+    
+    /* Ensure buttons are evenly distributed */
+    .controls-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+      grid-gap: 0.3rem;
+      justify-items: center;
+    }
+    
+    /* Smallest image size */
+    .image-with-controls .section-container {
+      width: 280px;
+    }
+    
+    .quiz-image {
+      width: 250px;
+      height: 250px;
+    }
+    
+    /* Simplify tooltip text */
+    .icon-text,
+    .skip-text {
+      font-size: 0.7rem;
+      padding: 3px 5px;
+    }
+    
+    /* Welcome and play sections */
+    .welcome-header {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .welcome-text {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .play-container img {
+      max-width: 250px;
+    }
+    
+    .play-overlay {
+      font-size: 3rem;
+    }
+    
+    /* Reduce footer size */
+    footer {
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+    
+    /* Theme switcher */
+    .theme-select-wrapper {
+      width: 110px;
+    }
+    
+    #theme-switcher {
+      font-size: 0.7rem;
+    }
+  }
+  
+  /* ==========================================================================
+     Dot Scaling Fix for All Screen Sizes
+     ========================================================================== */
+  /* This ensures the red dot scales correctly relative to image size */
+  @media screen and (max-width: 1200px) {
+    #dot {
+      --original-width: 720px;
+      --current-width: 520px;
+      --scale-factor: calc(var(--current-width) / var(--original-width));
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    #dot {
+      --original-width: 720px;
+      --current-width: 460px;
+      --scale-factor: calc(var(--current-width) / var(--original-width));
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    #dot {
+      --original-width: 720px;
+      --current-width: 420px;
+      --scale-factor: calc(var(--current-width) / var(--original-width));
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    #dot {
+      --original-width: 720px;
+      --current-width: 280px;
+      --scale-factor: calc(var(--current-width) / var(--original-width));
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #dot {
+      --original-width: 720px;
+      --current-width: 250px;
+      --scale-factor: calc(var(--current-width) / var(--original-width));
+    }
+  }
+  
+  /* ==========================================================================
+     Portrait Orientation Adjustments
+     ========================================================================== */
+  @media screen and (max-width: 992px) and (orientation: portrait) {
+    /* Adjustments for portrait mode on tablets */
+    .maps {
+      flex-wrap: wrap;
+    }
+    
+    .icon-btn, .skip-btn {
+      margin: 0 0.2rem;
+    }
+  }
+  
+  /* ==========================================================================
+     Touch Device Adjustments
+     ========================================================================== */
+  @media (hover: none) {
+    /* Enlarge touch targets */
+    .btn {
+      min-height: 44px;
+    }
+    
+    .icon-btn, .skip-btn {
+      min-width: 44px !important;
+      min-height: 44px !important;
+    }
+    
+    /* Always show tooltips on touch devices since hover doesn't work */
+    .icon-text, .skip-text {
+      opacity: 1;
+      font-size: 0.7rem;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }

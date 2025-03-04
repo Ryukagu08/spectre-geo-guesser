@@ -250,11 +250,3 @@ background-color: var(--spectre-black);
   background: var(--theme-primary);
   border: 1px solid var(--spectre-grey);
 }
-
-@media screen and (max-width: 900px) {
-.top-left-controls .icon-text:before,
-.top-right-controls .icon-text:before,
-.top-right-controls .skip-text:before {
-  border-color: var(--theme-primary) transparent transparent transparent;
-}
-}
