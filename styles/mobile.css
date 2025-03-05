@@ -103,13 +103,15 @@
   
   body .icon-text, 
   body .skip-text {
-    position: absolute !important;
-    top: -30px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    white-space: nowrap !important;
+    display: none !important;
   }
   
+  .top-right-controls .skip-text:before,
+  .top-right-controls .icon-text:before,
+  .top-left-controls .icon-text:before {
+    display: none !important;
+  }
+
   #dot {
     --original-width: 720px;
     --current-width: min(600px, 85vw);

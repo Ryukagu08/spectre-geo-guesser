@@ -19,45 +19,93 @@ const THEMES = {
 };
 
 const DEFAULT_THEME = 'S0';
-let themeLink = null;
 let themeSwitcher = null;
 
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initThemeSwitcher);
+
+// Also try initializing immediately if the DOM is already ready
+if (document.readyState !== 'loading') {
+  initThemeSwitcher();
+}
+
 function initThemeSwitcher() {
-  if (!themeLink) {
-    themeLink = document.createElement('link');
-    themeLink.rel = 'stylesheet';
-    themeLink.id = 'theme-css';
-    document.head.appendChild(themeLink);
-  }
+  console.log("Initializing theme switcher");
   
-  loadTheme(localStorage.getItem('spectreTheme') || DEFAULT_THEME);
+  // Get saved theme from localStorage or use default
+  const savedTheme = localStorage.getItem('spectreTheme') || DEFAULT_THEME;
   
-  if (!document.getElementById('theme-switcher') && document.body) {
+  // First ensure we remove any existing theme stylesheets
+  removeExistingThemeStylesheets();
+  
+  // Apply the theme
+  applyTheme(savedTheme);
+  
+  // Create the theme switcher UI if it doesn't exist
+  if (!document.getElementById('theme-switcher')) {
     createStylizedThemeSwitcher();
   }
 }
 
-function loadTheme(themeId) {
+function removeExistingThemeStylesheets() {
+  // Remove any existing theme stylesheets to prevent conflicts
+  const themeLinks = document.querySelectorAll('link[href*="S0_style.css"], link[href*="S1_style.css"]');
+  themeLinks.forEach(link => link.remove());
+}
+
+function applyTheme(themeId) {
   if (!THEMES[themeId]) {
+    console.warn(`Theme "${themeId}" not found, using default`);
     themeId = DEFAULT_THEME;
   }
   
-  themeLink.href = THEMES[themeId].file;
+  console.log(`Applying theme: ${themeId}`);
   
-  const logoElement = document.getElementById('logo-image');
-  if (logoElement) {
-    logoElement.src = THEMES[themeId].logo;
-  }
+  // Create a new link element for the theme
+  const themeLink = document.createElement('link');
+  themeLink.rel = 'stylesheet';
+  themeLink.id = 'theme-css';
+  // Add a cache-busting parameter to prevent browser caching
+  themeLink.href = `${THEMES[themeId].file}?v=${new Date().getTime()}`;
   
+  // Add an onload handler to ensure the CSS is fully loaded
+  themeLink.onload = () => {
+    console.log(`Theme ${themeId} CSS loaded successfully`);
+    
+    // Update logo if it exists
+    const logoElement = document.getElementById('logo-image');
+    if (logoElement) {
+      logoElement.src = THEMES[themeId].logo;
+      console.log("Logo updated");
+    }
+    
+    document.body.style.display = 'none';
+    document.body.offsetHeight;
+    document.body.style.display = '';
+    
+    console.log("Theme applied completely");
+  };
+  
+  themeLink.onerror = () => {
+    console.error(`Failed to load theme ${themeId}`);
+  };
+  
+  document.head.appendChild(themeLink);
+
   document.body.setAttribute('data-theme', themeId);
+  
+  // Save the theme selection
   localStorage.setItem('spectreTheme', themeId);
   
+  // Update switcher UI if it exists
   if (themeSwitcher) {
     themeSwitcher.value = themeId;
   }
 }
 
 function createStylizedThemeSwitcher() {
+  console.log("Creating theme switcher UI");
+  
   const themeContainer = document.createElement('div');
   themeContainer.className = 'theme-switcher-container';
   themeContainer.innerHTML = `
@@ -72,10 +120,18 @@ function createStylizedThemeSwitcher() {
   
   document.body.appendChild(themeContainer);
   themeSwitcher = document.getElementById('theme-switcher');
-  themeSwitcher.value = localStorage.getItem('spectreTheme') || DEFAULT_THEME;
   
+  // Set the initial value
+  const currentTheme = localStorage.getItem('spectreTheme') || DEFAULT_THEME;
+  themeSwitcher.value = currentTheme;
+  
+  // Add change listener
   themeSwitcher.addEventListener('change', function() {
-    loadTheme(this.value);
+    console.log(`Theme change requested: ${this.value}`);
+    // Remove existing theme stylesheets
+    removeExistingThemeStylesheets();
+    // Apply the new theme
+    applyTheme(this.value);
   });
   
   addThemeSwitcherStyles();
@@ -84,6 +140,7 @@ function createStylizedThemeSwitcher() {
 function addThemeSwitcherStyles() {
   const styleElement = document.createElement('style');
   styleElement.textContent = `
+    /* Theme switcher styles - unchanged from original */
     .theme-switcher-container {
       position: fixed;
       top: 1rem;
@@ -189,14 +246,13 @@ function addThemeSwitcherStyles() {
         font-size: 0.8rem;
         padding: 0.5rem 2rem 0.5rem 0.8rem;
       }
+      
+      /* Rotate the arrow 180 degrees to point upwards */
+      .theme-select-wrapper::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
     }
   `;
   
   document.head.appendChild(styleElement);
-}
-
-document.addEventListener('DOMContentLoaded', initThemeSwitcher);
-
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  initThemeSwitcher();
 }

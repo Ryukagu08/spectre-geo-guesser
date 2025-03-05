@@ -29,7 +29,7 @@ body::before {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.1;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* Prevent background image on index page */
@@ -72,7 +72,6 @@ body::before {
 
 .map-btn:hover {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  opacity: 0.6;
 }
 
 .btn {

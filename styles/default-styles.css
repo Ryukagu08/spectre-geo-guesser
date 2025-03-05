@@ -123,15 +123,10 @@ h1 {
 #dot {
   visibility: hidden;
   position: absolute; 
-  /* Calculate the scale factor */
-  --original-width: 720px;
-  --current-width: 520px;
-  --scale-factor: calc(var(--current-width) / var(--original-width));
-
-  left: calc(var(--dot-x, 200) * var(--scale-factor) * 1px);
-  top: calc(var(--dot-y, 200) * var(--scale-factor) * 1px);
+  width: 10px;
+  height: 10px;
   z-index: 10;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Center the dot on the exact coordinate */
 }
  
 #geo-image {
@@ -175,10 +170,27 @@ h1 {
   justify-content: center;
   transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
+
+.map-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s ease;
+  z-index: 1;
+}
  
 .map-btn span {
   position: relative;
   z-index: 2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.map-btn:hover::before {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .map-btn:hover {

@@ -97,7 +97,6 @@ to { box-shadow: 0 0 15px var(--theme-secondary), 0 0 25px var(--theme-secondary
 
 .map-btn:hover {
 box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-opacity: 0.6;
 }
 
 .icon-btn, .skip-btn {
