@@ -46,6 +46,19 @@ window.onload = () => {
     .catch(error => console.error("Error loading JSON:", error));
 };
 
+// Function to update dot position when screen size changes
+function updateDotPosition() {
+    if (element_dot && element_dot.style.visibility === 'visible' && cords.x && cords.y) {
+        // Get the current quiz image container dimensions
+        const quizImage = document.querySelector('.quiz-image');
+        const scaleFactor = quizImage.clientWidth / 720;
+        
+        // Update dot position with the current scale factor
+        element_dot.style.left = `${cords.x * scaleFactor}px`;
+        element_dot.style.top = `${cords.y * scaleFactor}px`;
+    }
+}
+
 //event listeners 
 
 // place dot on click
@@ -65,14 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Set CSS variables for precise positioning
-        element_dot.style.setProperty('--dot-x', cords.x);
-        element_dot.style.setProperty('--dot-y', cords.y);
-
-        element_dot.style.left = `calc(${cords.x} * ((520 / 720) * 1px))`;
-        element_dot.style.top = `calc(${cords.y} * ((520 / 720) * 1px))`;
+        // Get current quiz image size for dynamic scaling
+        const quizImageWidth = document.querySelector('.quiz-image').clientWidth;
+        const scaleFactor = quizImageWidth / 720;
+        
+        // Position using absolute pixel values with proper scaling
+        element_dot.style.left = `${cords.x * scaleFactor}px`;
+        element_dot.style.top = `${cords.y * scaleFactor}px`;
         element_dot.style.visibility = 'visible';
     });
+    
+    // Add window resize listener to adjust dot position
+    window.addEventListener('resize', updateDotPosition);
 });
 
 //btn event listeners
@@ -136,12 +153,17 @@ document.querySelector("#btn-map").addEventListener("click", function()
 document.querySelector("#btn-answer").addEventListener("click", function() {
     const dotElement = element_dot;
     
-    // Set CSS variables for dot positioning
-    dotElement.style.setProperty('--dot-x', currentImageData.imageData.cords.x);
-    dotElement.style.setProperty('--dot-y', currentImageData.imageData.cords.y);
+    // Get current quiz image size for dynamic scaling
+    const quizImageWidth = document.querySelector('.quiz-image').clientWidth;
+    const scaleFactor = quizImageWidth / 720;
     
-    dotElement.style.left = `calc(${currentImageData.imageData.cords.x} * ((520 / 720) * 1px))`;
-    dotElement.style.top = `calc(${currentImageData.imageData.cords.y} * ((520 / 720) * 1px))`;
+    // Store the coordinates for later reference
+    cords.x = currentImageData.imageData.cords.x;
+    cords.y = currentImageData.imageData.cords.y;
+    
+    // Position using absolute pixel values with proper scaling
+    dotElement.style.left = `${cords.x * scaleFactor}px`;
+    dotElement.style.top = `${cords.y * scaleFactor}px`;
     
     dotElement.style.visibility = 'visible';
 

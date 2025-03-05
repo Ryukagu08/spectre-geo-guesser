@@ -97,7 +97,6 @@ to { box-shadow: 0 0 15px var(--theme-secondary), 0 0 25px var(--theme-secondary
 
 .map-btn:hover {
 box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-opacity: 0.6;
 }
 
 .icon-btn, .skip-btn {
@@ -249,12 +248,4 @@ background-color: var(--spectre-black);
 ::-webkit-scrollbar-thumb:hover {
   background: var(--theme-primary);
   border: 1px solid var(--spectre-grey);
-}
-
-@media screen and (max-width: 900px) {
-.top-left-controls .icon-text:before,
-.top-right-controls .icon-text:before,
-.top-right-controls .skip-text:before {
-  border-color: var(--theme-primary) transparent transparent transparent;
-}
 }

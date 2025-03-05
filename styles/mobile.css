@@ -1,0 +1,202 @@
+/* mobile.css */
+
+@media screen and (max-width: 992px) {
+  body {
+    min-width: 320px;
+    overflow-x: hidden;
+  }
+  
+  .section-container.image-container {
+    position: relative !important;
+    margin: 0 auto !important;
+    width: 85% !important;
+    max-width: 600px !important;
+  }
+  
+  .quiz-image {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 70px !important;
+  }
+  
+  body #btn-clear,
+  body #btn-map,
+  body #btn-answer,
+  body #btn-submit,
+  body #btn-continue,
+  body #btn-yes,
+  body #btn-no {
+    position: absolute !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+  }
+  
+  body #btn-clear,
+  body #btn-map,
+  body #btn-answer,
+  body #btn-continue {
+    bottom: -70px !important;
+    visibility: visible !important;
+  }
+  
+  body #btn-submit {
+    bottom: -65px !important;
+    visibility: visible !important;
+  }
+  
+  body #btn-yes,
+  body #btn-no {
+    bottom: -70px !important;
+    visibility: hidden !important;
+  }
+  
+  body #btn-clear {
+    left: calc(50% - 260px) !important;
+    transform: none !important;
+  }
+  
+  body #btn-map {
+    left: calc(50% - 160px) !important;
+    transform: none !important;
+  }
+  
+  body #btn-answer {
+    left: calc(50% - 30px) !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  body #btn-submit {
+    left: calc(50% + 210px) !important;
+    transform: none !important;
+  }
+  
+  body #btn-continue {
+    left: calc(50% + 120px) !important;
+    transform: none !important;
+  }
+  
+  body #btn-yes {
+    left: calc(50% - -5px) !important;
+  }
+  
+  body #btn-no {
+    left: calc(50% + 60px) !important;
+  }
+  
+  .top-left-controls,
+  .top-right-controls {
+    position: static !important;
+  }
+  
+  body #btn-yes[style*="visibility: visible"],
+  body #btn-no[style*="visibility: visible"] {
+    visibility: visible !important;
+  }
+  
+  body .icon-btn, 
+  body .skip-btn {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  body .icon-text, 
+  body .skip-text {
+    display: none !important;
+  }
+  
+  .top-right-controls .skip-text:before,
+  .top-right-controls .icon-text:before,
+  .top-left-controls .icon-text:before {
+    display: none !important;
+  }
+
+  #dot {
+    --original-width: 720px;
+    --current-width: min(600px, 85vw);
+    --scale-factor: calc(var(--current-width) / var(--original-width));
+  }
+  
+  .center-content {
+    margin-bottom: 70px !important;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  body #btn-clear {
+    left: calc(50% - 220px) !important;
+  }
+  
+  body #btn-map {
+    left: calc(50% - 135px) !important;
+  }
+  
+  body #btn-submit {
+    left: calc(50% + 165px) !important;
+  }
+  
+  body #btn-continue {
+    left: calc(50% + 100px) !important;
+  }
+  
+  body #btn-yes {
+    left: calc(50% - 5px) !important;
+  }
+
+  body #btn-no {
+    left: calc(50% + 40px) !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body #btn-clear,
+  body #btn-map,
+  body #btn-answer,
+  body #btn-submit,
+  body #btn-continue,
+  body #btn-yes,
+  body #btn-no {
+    bottom: auto !important;
+    top: 430px !important;
+  }
+  
+  body #btn-clear {
+    left: calc(50% - 160px) !important;
+  }
+  
+  body #btn-map {
+    left: calc(50% - 100px) !important;
+  }
+
+  body #btn-answer {
+    left: calc(50% - 20px) !important;
+  }
+  
+  body #btn-submit {
+    left: calc(50% + 110px) !important;
+  }
+  
+  body #btn-continue {
+    left: calc(50% + 70px) !important;
+  }
+  
+  body #btn-yes {
+    left: calc(50% - 0px) !important;
+  }
+
+  body #btn-no {
+    left: calc(50% + 30px) !important;
+  }
+
+  body .icon-btn, 
+  body .skip-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  body .icon-wrapper i, 
+  body .skip-icon i {
+    font-size: 1.4rem !important;
+  }
+}
