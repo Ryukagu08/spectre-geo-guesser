@@ -147,14 +147,19 @@ const highlightCorrectMap = () => {
     mapCheck = currentImageData.map;
 }
 
-const showCorrectAnswer = () => {
-    // Set CSS variables for dot positioning
-    element_dot.style.setProperty('--dot-x', x);
-    element_dot.style.setProperty('--dot-y', y);
-
-    element_dot.style.left = `calc(${currentImageData.imageData.cords.x} * ((520 / 720) * 1px))`;
-    element_dot.style.top = `calc(${currentImageData.imageData.cords.y} * ((520 / 720) * 1px))`;
-
+const showCorrectAnswer = () => {    
+    // Get current quiz image size for dynamic scaling
+    const quizImageWidth = document.querySelector('.quiz-image').clientWidth;
+    const scaleFactor = quizImageWidth / 720;
+    
+    // Store the coordinates for later reference
+    cords.x = currentImageData.imageData.cords.x;
+    cords.y = currentImageData.imageData.cords.y;
+    
+    // Position using absolute pixel values with proper scaling
+    element_dot.style.left = `${cords.x * scaleFactor}px`;
+    element_dot.style.top = `${cords.y * scaleFactor}px`;
+    
     element_dot.style.visibility = 'visible';
 
     knowsAnswer = true;
@@ -175,13 +180,30 @@ const placeDot = () => {
         return;
     }
 
-    // Set CSS variables for precise positioning
-    element_dot.style.setProperty('--dot-x', cords.x);
-    element_dot.style.setProperty('--dot-y', cords.y);
+    // Get current quiz image size for dynamic scaling
+    const quizImageWidth = document.querySelector('.quiz-image').clientWidth;
+    const scaleFactor = quizImageWidth / 720;
 
-    element_dot.style.left = `calc(${cords.x} * ((520 / 720) * 1px))`;
-    element_dot.style.top = `calc(${cords.y} * ((520 / 720) * 1px))`;
+    // Position using absolute pixel values with proper scaling
+    element_dot.style.left = `${cords.x * scaleFactor}px`;
+    element_dot.style.top = `${cords.y * scaleFactor}px`;
     element_dot.style.visibility = 'visible';
+
+    // Add window resize listener to adjust dot position
+    window.addEventListener('resize', updateDotPosition);
+}
+
+// Function to update dot position when screen size changes
+const updateDotPosition = () => {
+    if (element_dot && element_dot.style.visibility === 'visible' && cords.x && cords.y) {
+        // Get the current quiz image container dimensions
+        const quizImage = document.querySelector('.quiz-image');
+        const scaleFactor = quizImage.clientWidth / 720;
+        
+        // Update dot position with the current scale factor
+        element_dot.style.left = `${cords.x * scaleFactor}px`;
+        element_dot.style.top = `${cords.y * scaleFactor}px`;
+    }
 }
 
 /*
