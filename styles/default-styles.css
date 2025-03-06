@@ -29,6 +29,7 @@ h1 {
   font-size: 0rem;
   margin: 0.5rem 0;
 }
+<<<<<<< HEAD
 
 #logo-image {
   position: relative;
@@ -38,6 +39,8 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+=======
+>>>>>>> 4f5ed53 (Update)
 
 /* Layout Structure */
 .game-layout {
