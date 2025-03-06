@@ -13,9 +13,9 @@ let distanceX = 0;
 let distanceY = 0;
 let cords = {};
 
-/**
- * Sets up all event listeners for game interaction
- */
+
+// Sets up all event listeners for game interaction
+
 export const setupEventListeners = () => {
     // Submit button - check if coordinates are correct
     document.querySelector("#btn-submit").addEventListener("click", function() {
@@ -67,9 +67,9 @@ export const setupEventListeners = () => {
     window.addEventListener('resize', updateDotPosition);
 }
 
-/**
- * Sets up map selection buttons
- */
+
+// Sets up map selection buttons
+
 const setUpMapButtons = () => {
     maps.forEach((mapName) => {
         document.querySelector(`#btn-${mapName.toLowerCase()}`).addEventListener("click", function () {
@@ -81,9 +81,9 @@ const setUpMapButtons = () => {
     });
 }
 
-/**
- * Checks if submitted guess is correct
- */
+
+// Checks if submitted guess is correct
+
 const submitted = (x, y, currentImageData, mapCheck) => {
     distanceX = Math.abs(x - currentImageData.imageData.cords.x);
     distanceY = Math.abs(y - currentImageData.imageData.cords.y);
@@ -102,9 +102,9 @@ const submitted = (x, y, currentImageData, mapCheck) => {
     }
 }
 
-/**
- * Handles the continue button functionality
- */
+
+// Handles the continue button functionality
+
 const handlesContinue = () => {
     if (!knowsAnswer) {
         updateResult("You don't know the answer, would you still like to continue?", 'default');
@@ -126,9 +126,9 @@ const handlesContinue = () => {
     updateResult("Where is this image?", 'default');
 }
 
-/**
- * Highlights the correct map button and shows that map
- */
+
+// Highlights the correct map button and shows that map
+
 const highlightCorrectMap = () => {
     clearMapHighlight();
 
@@ -142,9 +142,9 @@ const highlightCorrectMap = () => {
     toggleVisibility(true, "clickable-image");
 }
 
-/**
- * Shows the correct answer location on the map
- */
+
+// Shows the correct answer location on the map
+
 const showCorrectAnswer = () => {    
     // Store the coordinates for later reference
     cords.x = currentImageData.imageData.cords.x;
@@ -159,9 +159,9 @@ const showCorrectAnswer = () => {
     knowsAnswer = true;
 }
 
-/**
- * Places the dot on the map at the clicked location
- */
+
+// Places the dot on the map at the clicked location
+
 const placeDot = () => {
     const img = event.target;
     const rect = img.getBoundingClientRect();
@@ -187,9 +187,9 @@ const placeDot = () => {
     element_dot.style.visibility = 'visible';
 }
 
-/**
- * Updates dot position when screen size changes
- */
+
+// Updates dot position when screen size changes
+
 const updateDotPosition = () => {
     if (!element_dot || !cords.x || !cords.y) return;
     

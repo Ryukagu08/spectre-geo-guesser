@@ -1,7 +1,3 @@
-/**
- * Spectre Divide Geoguessr Theme Switcher
- */
-
 const THEMES = {
   S0: {
     name: "SPECTRE",
@@ -45,9 +41,9 @@ function initThemeSwitcher() {
   }
 }
 
-/**
- * Preload background images for all themes
- */
+
+// Preload background images for all themes
+
 function preloadBackgrounds() {
   THEME_KEYS.forEach(key => {
     const img = new Image();
@@ -55,9 +51,9 @@ function preloadBackgrounds() {
   });
 }
 
-/**
- * Apply the selected theme
- */
+
+// Apply the selected theme
+
 function applyTheme(themeId, animate = true) {
   if (!THEMES[themeId] || isTransitioning) return;
   
@@ -98,9 +94,9 @@ function applyTheme(themeId, animate = true) {
   }
 }
 
-/**
- * Update loading screen theme
- */
+
+// Update loading screen theme
+
 function updateLoadingScreenTheme(themeId) {
   const loadingScreen = document.getElementById('loading-screen');
   if (!loadingScreen) return;
@@ -122,9 +118,9 @@ function updateLoadingScreenTheme(themeId) {
   }
 }
 
-/**
- * Apply background image directly
- */
+
+// Apply background image directly
+
 function applyBackground(themeId) {
   // Get or create style element
   let styleEl = document.getElementById('theme-background-style');
@@ -151,9 +147,9 @@ function applyBackground(themeId) {
   `;
 }
 
-/**
- * Switch theme stylesheet
- */
+
+// Switch theme stylesheet
+
 function switchThemeFiles(themeId) {
   // Create new theme link
   const themeLink = document.createElement('link');
@@ -181,9 +177,9 @@ function switchThemeFiles(themeId) {
   document.head.appendChild(themeLink);
 }
 
-/**
- * Create theme switcher button
- */
+
+// Create theme switcher button
+
 function createThemeButton() {
   const themeContainer = document.createElement('div');
   themeContainer.className = 'theme-switcher-container';
@@ -212,9 +208,9 @@ function createThemeButton() {
   addThemeButtonStyles();
 }
 
-/**
- * Update button appearance for current theme
- */
+
+// Update button appearance for current theme
+
 function updateButtonAppearance(themeId) {
   if (!themeButton) return;
   
@@ -222,9 +218,9 @@ function updateButtonAppearance(themeId) {
   if (nameSpan) nameSpan.textContent = THEMES[themeId].name;
 }
 
-/**
- * Add transition styles
- */
+
+// Add transition styles
+
 function addTransitionStyles() {
   const style = document.createElement('style');
   style.textContent = `
@@ -238,9 +234,9 @@ function addTransitionStyles() {
   document.head.appendChild(style);
 }
 
-/**
- * Add theme button styles
- */
+
+// Add theme button styles
+
 function addThemeButtonStyles() {
   const style = document.createElement('style');
   style.textContent = `

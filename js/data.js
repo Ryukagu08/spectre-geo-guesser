@@ -15,9 +15,8 @@ let totalImagesToPreload = 0;
 let imagesPreloaded = 0;
 const maps = ["Mill", "Metro", "Skyway", "Commons", "Canal"];
 
-/**
- * Loads the location data from JSON file and initializes the game
- */
+// Loads the location data from JSON file and initializes the game
+
 export const loadData = async () => {
     // Initialize loading screen elements
     initLoadingScreen();
@@ -49,9 +48,8 @@ export const loadData = async () => {
     }
 };
 
-/**
- * Creates a flattened array of images from all maps and randomizes their order
- */
+// Creates a flattened array of images from all maps and randomizes their order
+
 const createDataArray = () => {
     for (let map in jsonData.Maps) {
         for (let imageKey in jsonData.Maps[map]) {
@@ -61,9 +59,9 @@ const createDataArray = () => {
     shuffleArray(flattenedImages);
 }
 
-/**
- * Gets the next image from the randomized array and updates the display
- */
+
+// Gets the next image from the randomized array and updates the display
+
 export let getRandomImage = () => {
     if (flattenedImages.length > 0) {
         currentImageData = flattenedImages.shift();
@@ -96,18 +94,18 @@ export let getRandomImage = () => {
     }
 };
 
-/**
- * Initialize loading screen elements
- */
+
+// Initialize loading screen elements
+
 function initLoadingScreen() {
     loadingScreen = document.getElementById('loading-screen');
     progressBar = document.getElementById('loading-progress-bar');
     loadingLogo = document.getElementById('loading-logo');
 }
 
-/**
- * Show the loading screen
- */
+
+// Show the loading screen
+
 function showLoading(withProgress = true) {
     if (!loadingScreen || isLoading) return;
     
@@ -130,9 +128,9 @@ function showLoading(withProgress = true) {
     loadingScreen.classList.add('active');
 }
 
-/**
- * Hide the loading screen
- */
+
+// Hide the loading screen
+
 function hideLoading() {
     if (!loadingScreen || !isLoading) return;
     
@@ -153,18 +151,18 @@ function hideLoading() {
     }, 200);
 }
 
-/**
- * Update loading progress
- */
+
+// Update loading progress
+
 function updateProgress(percent) {
     if (progressBar) {
         progressBar.style.width = `${Math.min(Math.max(percent, 0), 100)}%`;
     }
 }
 
-/**
- * Preload initial batch of images with progress tracking
- */
+
+// Preload initial batch of images with progress tracking
+
 async function preloadInitialImages() {
     // Preload maps first (they're small and needed for gameplay)
     const mapPromises = [];
@@ -231,9 +229,9 @@ async function preloadInitialImages() {
     await Promise.all(imagePromises);
 }
 
-/**
- * Preload the next batch of images in the background
- */
+
+// Preload the next batch of images in the background
+
 function preloadNextBatchOfImages() {
     const preloadCount = 3;
     const endIdx = Math.min(preloadCount, flattenedImages.length);

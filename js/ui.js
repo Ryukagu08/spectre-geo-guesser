@@ -1,10 +1,4 @@
-/**
- * UI utility functions for Spectre Divide Geoguessr
- */
-
-/**
- * Changes the displayed image with loading state management
- */
+// Changes the displayed image with loading state management
 export const changeImage = (data) => {
     const imageElement = document.querySelector("#geo-image");
     const quizImageContainer = document.querySelector(".quiz-image");
@@ -23,9 +17,9 @@ export const changeImage = (data) => {
     };
 }
 
-/**
- * Updates the result message with appropriate styling
- */
+
+// Updates the result message with appropriate styling
+
 export const updateResult = (message, color) => {
     const element_result = document.querySelector("#result");
     element_result.innerHTML = message;
@@ -39,9 +33,9 @@ export const updateResult = (message, color) => {
     }
 };
 
-/**
- * Toggles visibility of one or more elements
- */
+
+// Toggles visibility of one or more elements
+
 export const toggleVisibility = (isVisible, ...elementIds) => {
     elementIds.forEach((id) => {
         const element = document.querySelector(`#${id}`);
@@ -51,9 +45,9 @@ export const toggleVisibility = (isVisible, ...elementIds) => {
     });
 }
 
-/**
- * Removes the highlight from all map buttons
- */
+
+// Removes the highlight from all map buttons
+
 export const clearMapHighlight = () => {
     document.querySelectorAll(".map-btn").forEach(button => {
         button.classList.remove("correct-map");
