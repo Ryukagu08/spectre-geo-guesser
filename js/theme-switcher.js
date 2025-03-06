@@ -22,8 +22,30 @@ let themeButton = null;
 let isTransitioning = false;
 
 // Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initThemeSwitcher);
-if (document.readyState !== 'loading') initThemeSwitcher();
+document.addEventListener('DOMContentLoaded', checkAndInitThemeSwitcher);
+if (document.readyState !== 'loading') checkAndInitThemeSwitcher();
+
+// Check if we're on the index page, and only initialize if we're not
+function checkAndInitThemeSwitcher() {
+  // Skip theme switcher initialization on index page
+  if (isIndexPage()) {
+    return;
+  }
+  
+  // Initialize theme switcher for game page
+  initThemeSwitcher();
+}
+
+// Check if current page is index
+function isIndexPage() {
+  const path = window.location.pathname;
+  return path === '/' || 
+         path === '/index' || 
+         path === '/index.html' || 
+         path === '/home' ||
+         path.endsWith('/index.html') ||
+         document.body.classList.contains('index-body');
+}
 
 function initThemeSwitcher() {
   // Get saved theme

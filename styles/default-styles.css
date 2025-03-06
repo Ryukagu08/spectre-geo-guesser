@@ -33,13 +33,12 @@ h1 {
 #logo-image {
   width: 40%;
   height: auto;
-  transition: transform 0.3s ease;
   margin-top: 1rem;
+  opacity: 1; /* Ensure full opacity */
+  /* Removed transition and hover effect */
 }
  
-#logo-image:hover {
-  transform: scale(1.02);
-}
+/* Removed logo-image:hover rule */
 
 /* Layout Structure */
 .game-layout {
