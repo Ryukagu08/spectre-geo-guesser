@@ -199,23 +199,23 @@ h1 {
 
 /* Map background images */
 #btn-mill {
-  background-image: url('../assets/thumbnails/Mill.png');
+  background-image: url('../assets/thumbnails/Mill.webp');
 }
  
 #btn-metro {
-  background-image: url('../assets/thumbnails/Metro.png');
+  background-image: url('../assets/thumbnails/Metro.webp');
 }
  
 #btn-skyway {
-  background-image: url('../assets/thumbnails/Skyway.png');
+  background-image: url('../assets/thumbnails/Skyway.webp');
 }
  
 #btn-commons {
-  background-image: url('../assets/thumbnails/Commons.png');
+  background-image: url('../assets/thumbnails/Commons.webp');
 }
  
 #btn-canal {
-  background-image: url('../assets/thumbnails/Canal.png');
+  background-image: url('../assets/thumbnails/Canal.webp');
 }
 
 /* Buttons */
