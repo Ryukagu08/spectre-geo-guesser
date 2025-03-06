@@ -1,0 +1,18 @@
+{
+    "Maps": {
+        "Mill": {
+            "0": { "name": "image_1", "difficulty": "", "cords": { "x": 520, "y": 446 }, "used": false },
+            "1": { "name": "image_2", "difficulty": "", "cords": { "x": 155, "y": 423 }, "used": false },
+            "2": { "name": "image_3", "difficulty": "", "cords": { "x": 162, "y": 414 }, "used": false }
+        },
+        "Skyway": {
+            "0": { "name": "image_1", "difficulty": "", "cords": { "x": 387, "y": 158 }, "used": false },
+            "1": { "name": "image_2", "difficulty": "", "cords": { "x": 467, "y": 311 }, "used": false },
+            "2": { "name": "image_3", "difficulty": "", "cords": { "x": 179, "y": 223 }, "used": false }
+        },
+        "Metro": {
+            "0": { "name": "image_1", "difficulty": "", "cords": { "x": 380, "y": 153 }, "used": false },
+            "1": { "name": "image_2", "difficulty": "", "cords": { "x": 455, "y": 158 }, "used": false }
+        }
+    }
+}
