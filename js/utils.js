@@ -1,7 +1,8 @@
 export let x;
 export let y;
 
-// Shuffle array using Fisher-Yates algorithm
+// Shuffles an array using Fisher-Yates algorithm
+
 export const shuffleArray = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -9,7 +10,8 @@ export const shuffleArray = (arr) => {
     }
 }
 
-// Get the coordinates from a click event
+// Gets the coordinates from a click event
+
 export const getCoordinates = (event) => {
     const img = event.target;
     const rect = img.getBoundingClientRect();
@@ -17,6 +19,5 @@ export const getCoordinates = (event) => {
     x = Math.round(event.clientX - rect.left);
     y = Math.round(event.clientY - rect.top);
 
-    return {x,y}
+    return {x, y};
 }
-

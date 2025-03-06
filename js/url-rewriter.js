@@ -1,10 +1,9 @@
-/**
- * URL Rewriter for Spectre Divide Geoguessr
- * Changes /game.html to /guessr and /index.html to /home in the URL bar
- * 
- * Include this script in both game.html and index.html before the closing </body> tag:
- * <script src="js/url-rewriter.js"></script>
- */
+// URL Rewriter for Spectre Divide Geoguessr
+// Changes /game.html to /guessr and /index.html to /home in the URL bar
+
+// Include this script in both game.html and index.html before the closing </body> tag:
+// <script src="js/url-rewriter.js"></script>
+
 
 (function() {
     // Function to change URL without page reload
