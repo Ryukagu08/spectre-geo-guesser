@@ -1,10 +1,15 @@
 /* Mobile styles for Spectre Divide Geoguessr */
 
 @media screen and (max-width: 992px) {
+  /* Prevent horizontal scrolling at the root level */
+  html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+  
   body {
     min-width: 320px;
-    overflow-x: hidden;
-    overflow-y: auto !important;
   }
   
   /* Center-align everything */
@@ -15,8 +20,9 @@
     justify-content: flex-start !important;
     width: 100% !important;
     margin: 0 auto !important;
-    padding: 0 !important;
+    padding: 0 0 100px 0 !important; /* Added bottom padding to create space for buttons */
     box-sizing: border-box !important;
+    overflow-x: hidden !important;
   }
   
   .game-layout {
@@ -26,6 +32,7 @@
     display: flex !important;
     justify-content: center !important;
     padding: 0 !important;
+    overflow-x: hidden !important;
   }
   
   /* Scrolling fix for loading state */
@@ -102,6 +109,7 @@
     justify-content: center !important;
     align-items: center !important;
     margin: 0 auto !important;
+    overflow: visible !important; /* Ensure buttons aren't clipped */
   }
   
   /* Flexible map buttons */
@@ -132,10 +140,11 @@
   .bottom-controls-container {
     position: relative !important;
     width: 90% !important;
-    height: 70px !important;
+    height: 120px !important; /* Increased height for the container */
     margin: 0.5rem auto !important;
     display: flex !important;
     justify-content: center !important;
+    overflow: visible !important; /* Ensure buttons aren't clipped */
   }
   
   /* Control buttons positioning */
@@ -147,18 +156,20 @@
   body #btn-yes,
   body #btn-no {
     position: absolute !important;
-    bottom: 10px !important;
+    bottom: -55px !important; /* Keep as-is since this works visually */
     top: auto !important;
     margin: 0 !important;
     z-index: 9999 !important;
   }
   
-  body #btn-clear { left: 0% !important; }
-  body #btn-map { left: 20% !important; }
+  /* Constrain the button positions to prevent horizontal overflow */
+  body #btn-clear { left: 5% !important; }
+  body #btn-map { left: 25% !important; }
   body #btn-answer { left: 50% !important; transform: translateX(-50%) !important; }
-  body #btn-submit { right: 0% !important; }
-  body #btn-continue { right: 20% !important; }
+  body #btn-submit { right: 5% !important; }
+  body #btn-continue { right: 25% !important; }
   
+  /* Confirmation buttons */
   body #btn-yes,
   body #btn-no {
     visibility: hidden !important;
@@ -202,8 +213,18 @@
   /* Main content scrolling */
   .main-content {
     overflow-y: auto !important;
+    overflow-x: hidden !important;
     min-height: 100% !important;
     width: 100% !important;
+    position: relative !important;
+    padding-bottom: 50px !important; /* Add space at the bottom */
+  }
+
+  /* All quiz elements */
+  .quiz {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative !important;
   }
 
   /* Notice section */
@@ -344,13 +365,13 @@
   
   body .icon-wrapper i, 
   body .skip-icon i {
-    font-size: 1.4rem !important;
+    font-size: 2.4rem !important;
   }
   
   /* Compact map buttons */
   .maps { gap: 0.3rem !important; }
   .map-btn { height: 40px !important; }
-  .map-btn span { font-size: 0.65rem !important; }
+  .map-btn span { font-size: 0.7rem !important; }
   
   #logo-image { width: 80% !important; }
   
