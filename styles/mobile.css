@@ -1,4 +1,4 @@
-/* mobile.css */
+/* Mobile styles for Spectre Divide Geoguessr */
 
 @media screen and (max-width: 992px) {
   body {
@@ -122,8 +122,6 @@
     margin-bottom: 70px !important;
   }
 
-  /* Index styling */
-
   .notice {
     visibility: visible !important;
     border-radius: 0 4px 4px 0;
@@ -139,6 +137,84 @@
     font-weight: bold;
     color: #f2f2f2;
     padding: 0.5rem 0;
+  }
+  
+  /* Disable hover effects on mobile */
+  .btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn),
+  .map-btn:hover,
+  .icon-btn:hover .icon-wrapper i,
+  .skip-btn:hover .skip-icon i,
+  #btn-submit:hover .icon-wrapper i,
+  #logo-image:hover,
+  .play-container:hover img,
+  .theme-button:hover {
+    transform: none !important;
+    background-color: inherit !important;
+    color: inherit !important;
+    box-shadow: inherit !important;
+    filter: none !important;
+    border-color: inherit !important;
+  }
+  
+  .map-btn:hover::before {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+  
+  #btn-yes:hover .icon-wrapper i {
+    color: var(--spectre-green) !important;
+  }
+  
+  #btn-no:hover .icon-wrapper i {
+    color: var(--spectre-pink) !important;
+  }
+  
+  .play-container:hover .play-overlay {
+    opacity: 0 !important;
+    background-color: transparent !important;
+  }
+  
+  body[data-theme="S0"] .btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
+    border-color: var(--spectre-light-grey) !important;
+  }
+  
+  body[data-theme="S1"] .btn:hover:not(.map-btn):not(.icon-btn):not(.skip-btn) {
+    border-color: var(--theme-secondary) !important;
+  }
+  
+  body[data-theme="S0"] .theme-button:hover {
+    color: #FFCB00 !important;
+    border-color: #FFCB00 !important;
+  }
+  
+  body[data-theme="S1"] .theme-button:hover {
+    color: #C6EA34 !important;
+    border-color: #C6EA34 !important;
+  }
+  
+  .theme-switcher-container {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  .theme-name {
+    display: none !important;
+  }
+  
+  .theme-button {
+    padding: 0.5rem !important;
+    width: 45px !important;
+    height: 45px !important;
+    justify-content: center !important;
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  .theme-button i {
+    font-size: 1.5rem !important;
   }
 }
 
