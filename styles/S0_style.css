@@ -32,8 +32,6 @@ body::before {
   z-index: 0;
 }
 
-#logo-image { opacity: 1;}
-
 /* Prevent background image on index page */
 .index-body::before {
   background-image: none;
