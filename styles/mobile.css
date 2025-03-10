@@ -1,5 +1,12 @@
-/* Mobile styles for Spectre Divide Geoguessr */
+/* Desktop logo fix - prevent vertical stretching */
+#logo-image {
+  position: relative;
+  max-width: 850px;
+  height: auto !important; /* Maintain aspect ratio */
+  object-fit: contain !important; /* Prevent stretching */
+}
 
+/* Mobile styles for Spectre Divide Geoguessr */
 @media screen and (max-width: 992px) {
   /* Prevent horizontal scrolling at the root level */
   html, body {
@@ -38,6 +45,15 @@
   /* Scrolling fix for loading state */
   body.loading { overflow: hidden; }
   .loading-screen:not(.active) { pointer-events: none; }
+  
+  /* Logo scaling fix for mobile */
+  #logo-image {
+    width: 90% !important;
+    max-width: 90% !important;
+    height: auto !important;
+    margin: 0.4rem auto !important;
+    object-fit: contain !important;
+  }
   
   /* Consistent width containers */
   #result,
@@ -331,7 +347,11 @@
     font-size: 0.8rem !important;
   }
   
-  #logo-image { width: 60% !important; }
+  /* Override the 60% width to maintain consistent 90% width */
+  #logo-image { 
+    width: 90% !important;
+    max-width: 90% !important;
+  }
   
   .welcome-header { font-size: 1.8rem !important; }
   .welcome-text { font-size: 1rem !important; }
@@ -373,7 +393,11 @@
   .map-btn { height: 40px !important; }
   .map-btn span { font-size: 0.7rem !important; }
   
-  #logo-image { width: 60% !important; }
+  /* Override the 60% width to maintain consistent 90% width */
+  #logo-image { 
+    width: 90% !important;
+    max-width: 90% !important;
+  }
   
   #result {
     font-size: 1rem !important;

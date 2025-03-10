@@ -30,6 +30,15 @@ h1 {
   margin: 0.5rem 0;
 }
 
+#logo-image {
+  position: relative;
+  max-width: 850px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Layout Structure */
 .game-layout {
   position: relative;
