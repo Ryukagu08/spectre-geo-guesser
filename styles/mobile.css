@@ -40,10 +40,7 @@
   .loading-screen:not(.active) { pointer-events: none; }
   
   /* Consistent width containers */
-  #logo-image,
   #result,
-  .welcome-container,
-  .notice,
   .section-container.maps-container,
   .section-container.image-container {
     width: 90% !important;
@@ -52,12 +49,6 @@
     left: 0 !important;
     right: 0 !important;
     box-sizing: border-box !important;
-  }
-  
-  /* Logo scaling fix */
-  #logo-image {
-    height: auto !important;
-    object-fit: contain !important;
   }
   
   /* Result text styling */
@@ -340,11 +331,7 @@
     font-size: 0.8rem !important;
   }
   
-  /* Keep consistent 90% width instead of 60% */
-  #logo-image { 
-    width: 90% !important;
-    max-width: 90% !important;
-  }
+  #logo-image { width: 60% !important; }
   
   .welcome-header { font-size: 1.8rem !important; }
   .welcome-text { font-size: 1rem !important; }
@@ -386,11 +373,7 @@
   .map-btn { height: 40px !important; }
   .map-btn span { font-size: 0.7rem !important; }
   
-  /* Keep consistent 90% width instead of 60% */
-  #logo-image { 
-    width: 90% !important;
-    max-width: 90% !important;
-  }
+  #logo-image { width: 60% !important; }
   
   #result {
     font-size: 1rem !important;
