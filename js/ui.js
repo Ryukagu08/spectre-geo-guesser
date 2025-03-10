@@ -18,7 +18,7 @@ export const changeImage = (data) => {
 }
 
 
-// Updates the result message with appropriate styling
+// Updates the result message with appropriate styling and adjusts font size if needed
 
 export const updateResult = (message, color) => {
     const element_result = document.querySelector("#result");
@@ -31,7 +31,29 @@ export const updateResult = (message, color) => {
     } else if (color === "red") {
         element_result.className = "result-incorrect";
     }
+    
+    // Adjust font size based on content length
+    adjustResultFontSize(element_result, message);
 };
+
+
+// Adjusts font size based on text length
+
+function adjustResultFontSize(element, message) {
+    // Reset font size first
+    element.style.fontSize = '';
+    
+    // Get the computed style to read the default font size
+    const style = window.getComputedStyle(element);
+    const defaultFontSize = parseFloat(style.fontSize);
+    
+    // If message is long, reduce the font size
+    if (message.length > 30) {
+        const sizeFactor = Math.min(1, 30 / message.length);
+        const newSize = Math.max(defaultFontSize * sizeFactor, defaultFontSize * 0.6);
+        element.style.fontSize = `${newSize}px`;
+    }
+}
 
 
 // Toggles visibility of one or more elements

@@ -3,6 +3,7 @@ import { getCoordinates } from "./utils.js";
 import { toggleVisibility, updateResult, clearMapHighlight } from "./ui.js";
 
 export let knowsAnswer = false;
+let confirmationMode = false; // Add confirmation state tracker
 
 let mapCheck = "Null";
 const maps = ["Mill", "Metro", "Skyway", "Commons", "Canal"];
@@ -19,6 +20,7 @@ let cords = {};
 export const setupEventListeners = () => {
     // Submit button - check if coordinates are correct
     document.querySelector("#btn-submit").addEventListener("click", function() {
+        confirmationMode = false; // Reset confirmation mode
         submitted(cords.x, cords.y, currentImageData, mapCheck);
     });
 
@@ -29,16 +31,19 @@ export const setupEventListeners = () => {
 
     // Get map button - show correct map and highlight it
     document.querySelector("#btn-map").addEventListener("click", function() {
+        confirmationMode = false; // Reset confirmation mode
         highlightCorrectMap();
     });
 
     // Get answer button - show correct answer spot
     document.querySelector("#btn-answer").addEventListener("click", function() {
+        confirmationMode = false; // Reset confirmation mode
         showCorrectAnswer();
     });
 
     // Clear button - hide the map and dot
     document.querySelector("#btn-clear").addEventListener("click", function() {
+        confirmationMode = false; // Reset confirmation mode
         toggleVisibility(false, "clickable-image", "dot");
         mapCheck = "Clear";
         clearMapHighlight();
@@ -46,20 +51,9 @@ export const setupEventListeners = () => {
 
     setUpMapButtons();
 
-    // Yes confirmation button - proceed to next image
-    document.querySelector("#btn-yes").addEventListener("click", function() {
-        knowsAnswer = true;
-        handlesContinue();
-    });
-    
-    // No confirmation button - stay on current image
-    document.querySelector("#btn-no").addEventListener("click", function() {
-        toggleVisibility(false, "btn-yes", "btn-no");
-        updateResult("Continue when you're ready.", 'default');
-    });
-
     // Listen for clicks on the map image to place guesses
     document.querySelector("#clickable-image").addEventListener("click", function(event) {
+        confirmationMode = false; // Reset confirmation mode
         placeDot();
     });
     
@@ -73,6 +67,7 @@ export const setupEventListeners = () => {
 const setUpMapButtons = () => {
     maps.forEach((mapName) => {
         document.querySelector(`#btn-${mapName.toLowerCase()}`).addEventListener("click", function () {
+            confirmationMode = false; // Reset confirmation mode
             document.querySelector("#clickable-image").src = `assets/Minimaps/${mapName}_Minimap_Overlay.png`;
             mapCheck = mapName;
             clearMapHighlight();
@@ -106,12 +101,34 @@ const submitted = (x, y, currentImageData, mapCheck) => {
 // Handles the continue button functionality
 
 const handlesContinue = () => {
-    if (!knowsAnswer) {
-        updateResult("You don't know the answer, would you still like to continue?", 'default');
-        toggleVisibility(true, "btn-yes", "btn-no");
+    // If confirmation is requested and user presses continue again
+    if (confirmationMode) {
+        // User confirmed, proceed to next image
+        confirmationMode = false;
+        
+        if (flattenedImages.length == 0) {
+            updateResult("That's the last image! Hope you had fun.", 'default');
+            return;
+        }
+
+        getRandomImage();
+        knowsAnswer = false;
+        toggleVisibility(false, "clickable-image", "dot");
+
+        mapCheck = "Clear";
+        clearMapHighlight();
+        updateResult("Where is this image?", 'default');
         return;
     }
     
+    // First click when they don't know the answer
+    if (!knowsAnswer) {
+        updateResult("You don't know the answer. Press NEXT again to continue anyway.", 'default');
+        confirmationMode = true;
+        return;
+    }
+    
+    // Normal continue when they know the answer
     if (flattenedImages.length == 0) {
         updateResult("That's the last image! Hope you had fun.", 'default');
         return;
@@ -119,7 +136,7 @@ const handlesContinue = () => {
 
     getRandomImage();
     knowsAnswer = false;
-    toggleVisibility(false, "btn-yes", "btn-no", "clickable-image", "dot");
+    toggleVisibility(false, "clickable-image", "dot");
 
     mapCheck = "Clear";
     clearMapHighlight();

@@ -56,6 +56,8 @@
     font-size: 1.4rem !important;
     padding: 0.4rem 1rem !important;
     text-align: center !important;
+    font-size-adjust: 0.5 !important;
+    min-height: 3.5rem !important;
   }
   
   /* Maps container specific */
@@ -152,9 +154,7 @@
   body #btn-map,
   body #btn-answer,
   body #btn-submit,
-  body #btn-continue,
-  body #btn-yes,
-  body #btn-no {
+  body #btn-continue {
     position: absolute !important;
     bottom: -55px !important; /* Keep as-is since this works visually */
     top: auto !important;
@@ -169,23 +169,9 @@
   body #btn-submit { right: 5% !important; }
   body #btn-continue { right: 25% !important; }
   
-  /* Confirmation buttons */
-  body #btn-yes,
-  body #btn-no {
-    visibility: hidden !important;
-  }
-  
-  body #btn-yes { left: 36% !important; }
-  body #btn-no { right: 36% !important; }
-  
   .top-left-controls,
   .top-right-controls {
     position: static !important;
-  }
-  
-  body #btn-yes[style*="visibility: visible"],
-  body #btn-no[style*="visibility: visible"] {
-    visibility: visible !important;
   }
   
   body .icon-btn, 
@@ -264,9 +250,6 @@
   
   .map-btn:hover::before { background-color: transparent !important; }
   
-  #btn-yes:hover .icon-wrapper i { color: var(--spectre-green) !important; }
-  #btn-no:hover .icon-wrapper i { color: var(--spectre-pink) !important; }
-  
   .play-container:hover .play-overlay {
     opacity: 0 !important;
     background-color: transparent !important;
@@ -331,8 +314,6 @@
     font-size: 0.8rem !important;
   }
   
-  #logo-image { width: 60% !important; }
-  
   .welcome-header { font-size: 1.8rem !important; }
   .welcome-text { font-size: 1rem !important; }
 }
@@ -352,6 +333,7 @@
   #result {
     font-size: 1.1rem !important;
     padding: 0.25rem 0.6rem !important;
+    min-height: 3.2rem !important;
   }
 }
 
@@ -373,12 +355,11 @@
   .map-btn { height: 40px !important; }
   .map-btn span { font-size: 0.7rem !important; }
   
-  #logo-image { width: 60% !important; }
-  
   #result {
     font-size: 1rem !important;
     padding: 0.2rem 0.5rem !important;
     margin: 0.2rem auto !important;
+    min-height: 3rem !important;
   }
   
   .welcome-header { font-size: 1.5rem !important; }
