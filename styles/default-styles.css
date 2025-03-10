@@ -452,13 +452,14 @@ main {
 }
  
 .welcome-container {
-  max-width: 700px;
+  max-width: 850px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 12px;
   padding-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
 }
 
 .welcome-header {
@@ -479,6 +480,9 @@ main {
 
 .notice {
   visibility: hidden;
+  max-width: 850px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .discord-link {
