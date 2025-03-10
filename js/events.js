@@ -1,9 +1,8 @@
 import { currentImageData, flattenedImages, getRandomImage } from "./data.js";
-import { getCoordinates } from "./utils.js";
 import { toggleVisibility, updateResult, clearMapHighlight } from "./ui.js";
 
 export let knowsAnswer = false;
-let confirmationMode = false; // Add confirmation state tracker
+let confirmationMode = false;
 
 let mapCheck = "Null";
 const maps = ["Mill", "Metro", "Skyway", "Commons", "Canal"];
@@ -14,13 +13,11 @@ let distanceX = 0;
 let distanceY = 0;
 let cords = {};
 
-
 // Sets up all event listeners for game interaction
-
 export const setupEventListeners = () => {
     // Submit button - check if coordinates are correct
     document.querySelector("#btn-submit").addEventListener("click", function() {
-        confirmationMode = false; // Reset confirmation mode
+        confirmationMode = false;
         submitted(cords.x, cords.y, currentImageData, mapCheck);
     });
 
@@ -31,19 +28,19 @@ export const setupEventListeners = () => {
 
     // Get map button - show correct map and highlight it
     document.querySelector("#btn-map").addEventListener("click", function() {
-        confirmationMode = false; // Reset confirmation mode
+        confirmationMode = false;
         highlightCorrectMap();
     });
 
     // Get answer button - show correct answer spot
     document.querySelector("#btn-answer").addEventListener("click", function() {
-        confirmationMode = false; // Reset confirmation mode
+        confirmationMode = false;
         showCorrectAnswer();
     });
 
     // Clear button - hide the map and dot
     document.querySelector("#btn-clear").addEventListener("click", function() {
-        confirmationMode = false; // Reset confirmation mode
+        confirmationMode = false;
         toggleVisibility(false, "clickable-image", "dot");
         mapCheck = "Clear";
         clearMapHighlight();
@@ -53,7 +50,7 @@ export const setupEventListeners = () => {
 
     // Listen for clicks on the map image to place guesses
     document.querySelector("#clickable-image").addEventListener("click", function(event) {
-        confirmationMode = false; // Reset confirmation mode
+        confirmationMode = false;
         placeDot();
     });
     
@@ -61,13 +58,11 @@ export const setupEventListeners = () => {
     window.addEventListener('resize', updateDotPosition);
 }
 
-
 // Sets up map selection buttons
-
 const setUpMapButtons = () => {
     maps.forEach((mapName) => {
         document.querySelector(`#btn-${mapName.toLowerCase()}`).addEventListener("click", function () {
-            confirmationMode = false; // Reset confirmation mode
+            confirmationMode = false;
             document.querySelector("#clickable-image").src = `assets/Minimaps/${mapName}_Minimap_Overlay.png`;
             mapCheck = mapName;
             clearMapHighlight();
@@ -76,9 +71,7 @@ const setUpMapButtons = () => {
     });
 }
 
-
 // Checks if submitted guess is correct
-
 const submitted = (x, y, currentImageData, mapCheck) => {
     distanceX = Math.abs(x - currentImageData.imageData.cords.x);
     distanceY = Math.abs(y - currentImageData.imageData.cords.y);
@@ -97,13 +90,10 @@ const submitted = (x, y, currentImageData, mapCheck) => {
     }
 }
 
-
 // Handles the continue button functionality
-
 const handlesContinue = () => {
     // If confirmation is requested and user presses continue again
     if (confirmationMode) {
-        // User confirmed, proceed to next image
         confirmationMode = false;
         
         if (flattenedImages.length == 0) {
@@ -114,7 +104,6 @@ const handlesContinue = () => {
         getRandomImage();
         knowsAnswer = false;
         toggleVisibility(false, "clickable-image", "dot");
-
         mapCheck = "Clear";
         clearMapHighlight();
         updateResult("Where is this image?", 'default');
@@ -137,15 +126,12 @@ const handlesContinue = () => {
     getRandomImage();
     knowsAnswer = false;
     toggleVisibility(false, "clickable-image", "dot");
-
     mapCheck = "Clear";
     clearMapHighlight();
     updateResult("Where is this image?", 'default');
 }
 
-
 // Highlights the correct map button and shows that map
-
 const highlightCorrectMap = () => {
     clearMapHighlight();
 
@@ -159,9 +145,7 @@ const highlightCorrectMap = () => {
     toggleVisibility(true, "clickable-image");
 }
 
-
 // Shows the correct answer location on the map
-
 const showCorrectAnswer = () => {    
     // Store the coordinates for later reference
     cords.x = currentImageData.imageData.cords.x;
@@ -176,9 +160,7 @@ const showCorrectAnswer = () => {
     knowsAnswer = true;
 }
 
-
 // Places the dot on the map at the clicked location
-
 const placeDot = () => {
     const img = event.target;
     const rect = img.getBoundingClientRect();
@@ -204,9 +186,7 @@ const placeDot = () => {
     element_dot.style.visibility = 'visible';
 }
 
-
 // Updates dot position when screen size changes
-
 const updateDotPosition = () => {
     if (!element_dot || !cords.x || !cords.y) return;
     
@@ -217,7 +197,6 @@ const updateDotPosition = () => {
     const containerWidth = container.clientWidth;
     
     // For square container, calculate positions based on container width
-    // The actual image might be smaller, but the container is square
     const scaleFactor = containerWidth / 720;
     
     // Position using absolute pixel values with proper scaling
