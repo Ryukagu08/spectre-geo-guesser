@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectre Divide</title>
+    
+    <!-- Critical inline styles -->
+    <style>
+        body{margin:0}
+        #loading-screen{position:fixed;inset:0;background:#000;z-index:1500;display:flex;flex-direction:column;justify-content:center;align-items:center}
+        .loading-spinner-outer{position:absolute;width:120px;height:120px;border:3px solid transparent;border-top-color:#FFCB00;border-radius:50%;animation:spin 1.5s linear infinite}
+        .loading-text{color:#FFCB00;font-family:sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:3px;margin-top:20px;font-weight:bold}
+        .loading-progress-bar{background-color:#FFCB00;height:100%;width:0%;border-radius:3px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        #loading-screen.flashpoint .loading-spinner-outer{border-top-color:#C6EA34}
+        #loading-screen.flashpoint .loading-text{color:#C6EA34}
+        #loading-screen.flashpoint .loading-progress-bar{background-color:#C6EA34}
+        #loading-screen.spectre .loading-spinner-outer{border-top-color:#FFCB00}
+        #loading-screen.spectre .loading-text{color:#FFCB00}
+        #loading-screen.spectre .loading-progress-bar{background-color:#FFCB00}
+        body{overflow-y:auto !important}
+        body.loading{overflow:hidden}
+    </style>
+    
+    <!-- Theme detection script -->
+    <script>
+        (function(){
+            const savedTheme=localStorage.getItem('spectreTheme')||'S0';
+            const themeClass=savedTheme==='S1'?'flashpoint':'spectre';
+            document.body?document.body.classList.add('loading'):document.addEventListener('DOMContentLoaded',()=>document.body.classList.add('loading'));
+            function applyThemeToLoader(){
+                const loader=document.getElementById('loading-screen');
+                if(loader){
+                    loader.classList.add(themeClass);
+                    const logo=document.getElementById('loading-logo');
+                    if(logo)logo.src=savedTheme==='S1'?'assets/Logos/SDGS1Logo.png':'assets/Logos/SDGS0Logo.png';
+                }else setTimeout(applyThemeToLoader,10);
+            }
+            document.readyState==='loading'?document.addEventListener('DOMContentLoaded',applyThemeToLoader):applyThemeToLoader();
+        })();
+    </script>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/Logos/SDGS0Logo.png" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/Logos/SDGS1Logo.png" as="image" fetchpriority="high">
+    <link rel="preload" href="styles/default-styles.css" as="style">
+    <link rel="preload" href="styles/loading-styles.css" as="style">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="styles/default-styles.css">
+    <link rel="stylesheet" href="styles/loading-styles.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+    
+    <!-- Deferred CSS -->
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/din-condensed" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-condensed">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    
+    <meta http-equiv="Cache-Control" content="max-age=86400">
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/main.js" type="module" defer></script>
+    <script src="src/mobile-buttons.js" defer></script>
+    
+    <!-- Loading screen completion handler -->
+    <script>
+        window.addEventListener('load',function(){
+            setTimeout(function(){
+                document.body.classList.remove('loading');
+                document.getElementById('loading-screen').classList.remove('active');
+            },500);
+        });
+    </script>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loading-screen active" id="loading-screen">
+      <img src="assets/Logos/SDGS0Logo.png" width="200" alt="Spectre Divide Logo" class="loading-logo" id="loading-logo">
+      <div class="loading-spinner-container">
+        <div class="loading-spinner-outer"></div>
+        <div class="loading-spinner-middle"></div>
+        <div class="loading-spinner-inner"></div>
+      </div>
+      <div class="loading-text">LOADING</div>
+      <div class="loading-progress">
+        <div class="loading-progress-bar" id="loading-progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <h1>                
+            <img src="assets/Logos/SDGS0Logo.png" width="1024" height="224" alt="Spectre Divide Geoguessr" id="logo-image" fetchpriority="high">
+        </h1>
+    
+        <div class="quiz">
+            <div class="game-layout">
+                <div class="center-content">
+                    <!-- Map selection -->
+                    <div class="section-container maps-container">
+                        <div class="maps">
+                            <button class="btn map-btn" id="btn-mill"><span>Mill</span></button>
+                            <button class="btn map-btn" id="btn-metro"><span>Metro</span></button>
+                            <button class="btn map-btn" id="btn-skyway"><span>Skyway</span></button>
+                            <button class="btn map-btn" id="btn-commons"><span>Commons</span></button>
+                            <button class="btn map-btn" id="btn-canal"><span>Canal</span></button>
+                        </div>
+                    </div>
+                    
+                    <div id="result">Where is this image?</div>
+                    
+                    <div class="image-with-controls">
+                        <!-- Left controls -->
+                        <div class="top-left-controls">
+                            <button class="btn icon-btn" id="btn-clear">
+                                <span class="icon-wrapper"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="icon-text">CLEAR</span>
+                            </button>
+                            <button class="btn icon-btn" id="btn-map">
+                                <span class="icon-wrapper"><i class="fa-solid fa-map"></i></span>
+                                <span class="icon-text">GET MAP</span>
+                            </button>
+                            <button class="btn icon-btn" id="btn-answer">
+                                <span class="icon-wrapper"><i class="fa-solid fa-location-dot"></i></span>
+                                <span class="icon-text">GET ANSWER</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Image display -->
+                        <div class="section-container image-container">
+                            <div class="quiz-image">
+                                <img width="720" height="720" alt="image to be guessed" class="image" id="geo-image">
+                                <img width="720" height="720" class="image" id="clickable-image"> 
+                                <img src="assets/misc/Basic_red_dot.png" width="10" height="10" alt="☺" id="dot">
+                            </div>
+                        </div>
+                        
+                        <!-- Right controls -->
+                        <div class="top-right-controls">
+                            <button class="btn skip-btn" id="btn-continue">
+                                <span class="skip-icon"><i class="fa-solid fa-forward"></i></span>
+                                <span class="skip-text">NEXT</span>
+                            </button>
+                            
+                            <button class="btn icon-btn" id="btn-submit">
+                                <span class="icon-wrapper"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="icon-text">SUBMIT</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

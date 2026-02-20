@@ -1,0 +1,72 @@
+@import url("https://fonts.cdnfonts.com/css/din-condensed");
+@import "tailwindcss";
+
+@theme {
+  --color-spectre: #FFCB00;
+  --color-flashpoint: #C6EA34;
+  --color-dark: #0a0a0a;
+  --color-pink: #F73D72;
+  --color-green: #24EDAE;
+  --color-cyan: #4BF9FC;
+  --color-grey: #414141;
+  --color-light-grey: #D4D4CC;
+
+  --font-display: "DIN Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "DIN Condensed", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Dynamic theme utilities */
+@layer utilities {
+  .text-theme-primary {
+    color: var(--color-primary);
+  }
+  .bg-theme-primary {
+    background-color: var(--color-primary);
+  }
+  .border-theme-primary {
+    border-color: var(--color-primary);
+  }
+  .shadow-theme-glow {
+    box-shadow: 0 0 12px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  }
+  .ring-theme-primary {
+    --tw-ring-color: var(--color-primary);
+  }
+}
+
+:root {
+  --color-primary: var(--color-spectre);
+}
+
+[data-theme="S1"] {
+  --color-primary: var(--color-flashpoint);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: #F2F2F2;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-grey) rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--color-grey); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }

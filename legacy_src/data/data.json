@@ -1,0 +1,305 @@
+{
+    "Maps": {
+        "Mill": {
+            "0": {
+                "name": "image_1",
+                "difficulty": "",
+                "cords": { "x": "520", "y": "446" },
+                "used": false
+            },
+            "1": {
+                "name": "image_2",
+                "difficulty": "",
+                "cords": { "x": "155", "y": "423" },
+                "used": false
+            },
+            "2": {
+                "name": "image_3",
+                "difficulty": "",
+                "cords": { "x": "162", "y": "414" },
+                "used": false
+            },
+            "3": {
+                "name": "image_4",
+                "difficulty": "",
+                "cords": { "x": "218", "y": "304" },
+                "used": false
+            },
+            "4": {
+                "name": "image_5",
+                "difficulty": "",
+                "cords": { "x": "329", "y": "394" },
+                "used": false
+            },
+            "5": {
+                "name": "image_6",
+                "difficulty": "",
+                "cords": { "x": "337", "y": "406" },
+                "used": false
+            },
+            "6": {
+                "name": "image_7",
+                "difficulty": "",
+                "cords": { "x": "542", "y": "424" },
+                "used": false
+            },
+            "7": {
+                "name": "image_8",
+                "difficulty": "",
+                "cords": { "x": "283", "y": "446" },
+                "used": false
+            },
+            "8": {
+                "name": "image_9",
+                "difficulty": "",
+                "cords": { "x": "588", "y": "383" },
+                "used": false
+            },
+            "9": {
+                "name": "image_10",
+                "difficulty": "",
+                "cords": { "x": "348", "y": "114" },
+                "used": false
+            },
+            "10": {
+                "name": "image_11",
+                "difficulty": "",
+                "cords": { "x": "476", "y": "153" },
+                "used": false
+            },
+            "11": {
+                "name": "image_12",
+                "difficulty": "",
+                "cords": { "x": "565", "y": "302" },
+                "used": false
+            },
+            "12": {
+                "name": "image_13",
+                "difficulty": "",
+                "cords": { "x": "252", "y": "240" },
+                "used": false
+            },
+            "13": {
+                "name": "image_14",
+                "difficulty": "",
+                "cords": { "x": "433", "y": "460" },
+                "used": false
+            },
+            "14": {
+                "name": "image_15",
+                "difficulty": "",
+                "cords": { "x": "364", "y": "407" },
+                "used": false
+            },
+            "15": {
+                "name": "image_16",
+                "difficulty": "",
+                "cords": { "x": "445", "y": "619" },
+                "used": false
+            },
+            "16": {
+                "name": "image_17",
+                "difficulty": "",
+                "cords": { "x": "164", "y": "362" },
+                "used": false
+            }
+            
+        },
+        "Skyway": {
+            "0": {
+                "name": "image_1",
+                "difficulty": "",
+                "cords": { "x": "387", "y": "158" },
+                "used": false
+            },
+            "1": {
+                "name": "image_2",
+                "difficulty": "",
+                "cords": { "x": "467", "y": "311" },
+                "used": false
+            },
+            "2": {
+                "name": "image_3",
+                "difficulty": "",
+                "cords": { "x": "179", "y": "223" },
+                "used": false
+            }
+        },
+        "Metro": {
+            "0": {
+                "name": "image_1",
+                "difficulty": "",
+                "cords": { "x": "380", "y": "153" },
+                "used": false
+            },
+            "1": {
+                "name": "image_2",
+                "difficulty": "",
+                "cords": { "x": "455", "y": "158" },
+                "used": false
+            },
+            "2": {
+                "name": "image_3",
+                "difficulty": "",
+                "cords": { "x": "588", "y": "299" },
+                "used": false
+            }
+        },
+        "Commons": {
+            "0": {
+                "name": "image_1",
+                "difficulty": "",
+                "cords": { "x": "496", "y": "582" },
+                "used": false
+            },
+            "1": {
+                "name": "image_2",
+                "difficulty": "",
+                "cords": { "x": "634", "y": "360" },
+                "used": false
+            },
+            "2": {
+                "name": "image_3",
+                "difficulty": "",
+                "cords": { "x": "354", "y": "649" },
+                "used": false
+            },
+            "3": {
+                "name": "image_4",
+                "difficulty": "",
+                "cords": { "x": "394", "y": "176" },
+                "used": false
+            },
+            "4": {
+                "name": "image_5",
+                "difficulty": "",
+                "cords": { "x": "523", "y": "320" },
+                "used": false
+            },
+            "5": {
+                "name": "image_6",
+                "difficulty": "",
+                "cords": { "x": "228", "y": "144" },
+                "used": false
+            },
+            "6": {
+                "name": "image_7",
+                "difficulty": "",
+                "cords": { "x": "620", "y": "215" },
+                "used": false
+            },
+            "7": {
+                "name": "image_8",
+                "difficulty": "",
+                "cords": { "x": "571", "y": "202" },
+                "used": false
+            },
+            "8": {
+                "name": "image_9",
+                "difficulty": "",
+                "cords": { "x": "488", "y": "121" },
+                "used": false
+            },
+            "9": {
+                "name": "image_10",
+                "difficulty": "",
+                "cords": { "x": "233", "y": "259" },
+                "used": false
+            },
+            "10": {
+                "name": "image_11",
+                "difficulty": "",
+                "cords": { "x": "404", "y": "223" },
+                "used": false
+            },
+            "11": {
+                "name": "image_12",
+                "difficulty": "",
+                "cords": { "x": "313", "y": "298" },
+                "used": false
+            }
+        },
+        "Canal": {
+            "0": {
+                "name": "image_1",
+                "difficulty": "",
+                "cords": { "x": "415", "y": "526" },
+                "used": false
+            },
+            "1": {
+                "name": "image_2",
+                "difficulty": "",
+                "cords": { "x": "150", "y": "187" },
+                "used": false
+            },
+            "2": {
+                "name": "image_3",
+                "difficulty": "",
+                "cords": { "x": "446", "y": "438" },
+                "used": false
+            },
+            "3": {
+                "name": "image_4",
+                "difficulty": "",
+                "cords": { "x": "531", "y": "236" },
+                "used": false
+            },
+            "4": {
+                "name": "image_5",
+                "difficulty": "",
+                "cords": { "x": "280", "y": "355" },
+                "used": false
+            },
+            "5": {
+                "name": "image_6",
+                "difficulty": "",
+                "cords": { "x": "314", "y": "570" },
+                "used": false
+            },
+            "6": {
+                "name": "image_7",
+                "difficulty": "",
+                "cords": { "x": "486", "y": "507" },
+                "used": false
+            }
+        }
+    },
+    "temp": {
+        "0": {
+            "name": "image_1",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        },
+        "1": {
+            "name": "image_2",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        },
+        "2": {
+            "name": "image_3",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        },
+        "3": {
+            "name": "image_4",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        },
+        "4": {
+            "name": "image_5",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        },
+        "5": {
+            "name": "image_6",
+            "difficulty": "",
+            "cords": { "x": "", "y": "" },
+            "used": false
+        }
+    }
+}
