@@ -141,9 +141,9 @@
 <div class="h-screen w-screen flex flex-col overflow-hidden relative selection:bg-theme-primary selection:text-black">
 	
 	<!-- Game Header -->
-	<header class="grid grid-cols-[auto_1fr_auto] items-center px-4 md:px-6 py-2 md:py-3 bg-black/60 backdrop-blur-md z-20 shrink-0 h-14 md:h-16 shadow-lg gap-2 md:gap-4">
-		<!-- Logo -->
-		<div class="flex justify-start">
+	<header class="flex items-center justify-between px-4 md:px-6 py-2 md:py-3 bg-black/60 backdrop-blur-md z-20 shrink-0 h-14 md:h-16 shadow-lg gap-2 md:gap-4 w-full">
+		<!-- Left: Logo -->
+		<div class="flex flex-1 justify-start min-w-0">
 			<img 
 				src={theme.current === 'S0' ? "/assets/Logos/SDGS0Logo.png" : "/assets/Logos/SDGS1Logo.png"} 
 				alt="Spectre" 
@@ -151,15 +151,15 @@
 			/>
 		</div>
 		
-		<!-- Score -->
-		<div class="flex justify-center flex-1">
+		<!-- Center: Score -->
+		<div class="flex flex-none justify-center px-4 w-auto">
 			<span class="font-display text-lg sm:text-xl md:text-2xl tracking-widest text-white uppercase drop-shadow-md whitespace-nowrap">
 				Score: <span class="text-theme-primary font-bold ml-1">{game.score}</span>
 			</span>
 		</div>
 		
-		<!-- Controls -->
-		<div class="flex justify-end items-center gap-3">
+		<!-- Right: Controls -->
+		<div class="flex flex-1 justify-end items-center gap-3 min-w-0">
 			<ThemeToggle />
             <a href="{base}/" class="flex items-center justify-center w-10 h-10 rounded-md transition-all duration-300 text-light-grey hover:text-white hover:bg-white/10 border border-transparent hover:border-white/20" aria-label="Go Home">
                 <House size={20} />

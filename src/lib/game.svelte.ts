@@ -72,6 +72,7 @@ export class GameEngine {
 
 		this.currentRound = this.remainingImages.shift()!;
 		this.status = 'guessing';
+        this.preloadNextImages();
 	}
 
 	guess(x: number, y: number, mapName: string) {
@@ -125,6 +126,29 @@ export class GameEngine {
 		}
 		return array;
 	}
+
+    private preloadNextImages() {
+        if (typeof window === 'undefined') return; // Server-side check
+        
+        // Grab the next 2 upcoming images and precache them
+        const preloadCount = Math.min(2, this.remainingImages.length);
+        for (let i = 0; i < preloadCount; i++) {
+            const nextRound = this.remainingImages[i];
+            if (nextRound) {
+                const imgUrl = `/assets/${nextRound.map}Images/${nextRound.imageData.name}.jpg`;
+                const mapUrl = `/assets/Minimaps/${nextRound.map}_Minimap_Overlay.png`;
+                
+                const img = new Image();
+                img.src = imgUrl;
+
+                // We don't need to explicitly preload map thumbnails heavily since they're 
+                // re-used constantly, but hitting the browser cache doesn't hurt.
+                const mapImg = new Image();
+                mapImg.src = mapUrl;
+            }
+        }
+    }
 }
 
 export const game = new GameEngine();
+
