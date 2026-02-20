@@ -15,34 +15,48 @@
 
 	let container: HTMLDivElement;
     let width = $state(0);
+    let height = $state(0);
 
 	function handleClick(e: MouseEvent) {
 		if (disabled) return;
 		if (!container) return;
 		
 		const rect = container.getBoundingClientRect();
-		const BORDER_WIDTH = 2;
+		// The image is square (1:1) and uses object-contain. 
+		// Its actual rendered size is constrained by the smallest container dimension.
+		const imageSize = Math.min(rect.width, rect.height);
+		const offsetX = (rect.width - imageSize) / 2;
+		const offsetY = (rect.height - imageSize) / 2;
 		
-		let clickX = e.clientX - rect.left - BORDER_WIDTH;
-		let clickY = e.clientY - rect.top - BORDER_WIDTH;
+		let clickX = e.clientX - rect.left - offsetX;
+		let clickY = e.clientY - rect.top - offsetY;
 
-		clickX = Math.max(0, Math.min(clickX, width));
-		clickY = Math.max(0, Math.min(clickY, width));
+		// Clamp click to actual image bounds to avoid out of bounds guesses
+		clickX = Math.max(0, Math.min(clickX, imageSize));
+		clickY = Math.max(0, Math.min(clickY, imageSize));
 
-		const scaleFactor = 720 / width;
+		const scaleFactor = 720 / imageSize;
 		onguess(Math.round(clickX * scaleFactor), Math.round(clickY * scaleFactor));
 	}
     
     function getPosition(cords: {x: number, y: number}) {
-        if (!width) return { top: 0, left: 0 };
-        const scale = width / 720;
-        return { left: cords.x * scale, top: cords.y * scale };
+        if (!width || !height) return { top: 0, left: 0 };
+        const imageSize = Math.min(width, height);
+        const offsetX = (width - imageSize) / 2;
+        const offsetY = (height - imageSize) / 2;
+
+        const scale = imageSize / 720;
+        return { 
+            left: offsetX + cords.x * scale, 
+            top: offsetY + cords.y * scale 
+        };
     }
 </script>
 
 <div 
 	bind:this={container}
     bind:clientWidth={width}
+    bind:clientHeight={height}
 	class="relative w-full aspect-square max-h-full max-w-full mx-auto cursor-crosshair overflow-hidden select-none rounded-lg"
 	class:cursor-default={disabled}
 	onclick={handleClick}
